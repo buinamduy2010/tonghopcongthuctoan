@@ -18,15 +18,13 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             margin: 0;
-            /* Layout 3 cột */
             display: grid;
-            grid-template-columns: 250px 1fr 280px;
+            grid-template-columns: 250px 1fr 280px; /* Chia 3 cột: Trái - Giữa - Phải */
             background-color: var(--bg-color);
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 150 150'%3E%3Ctext x='10' y='30' fill='%233498db' fill-opacity='0.05' font-family='Arial' font-size='25'%3E∑%3C/text%3E%3Ctext x='100' y='50' fill='%233498db' fill-opacity='0.05' font-family='Arial' font-size='20'%3Eπ%3C/text%3E%3Ctext x='40' y='100' fill='%233498db' fill-opacity='0.05' font-family='Arial' font-size='30'%3E∫%3C/text%3E%3Ctext x='120' y='120' fill='%233498db' fill-opacity='0.05' font-family='Arial' font-size='22'%3E∞%3C/text%3E%3Ctext x='80' y='20' fill='%233498db' fill-opacity='0.05' font-family='Arial' font-size='18'%3E√%3C/text%3E%3C/svg%3E");
             background-attachment: fixed;
         }
 
-        /* Sidebar trái */
         .sidebar {
             width: 250px;
             background: var(--primary-color);
@@ -36,16 +34,24 @@
             padding: 20px;
             overflow-y: auto;
         }
-        .sidebar h2 { font-size: 1.2rem; border-bottom: 2px solid var(--accent-color); padding-bottom: 10px; }
+
+        .sidebar h2 {
+            font-size: 1.2rem;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+        }
+
         .sidebar ul { list-style: none; padding: 0; }
         .sidebar ul li { margin: 15px 0; }
         .sidebar ul li a { color: #bdc3c7; text-decoration: none; transition: 0.3s; }
         .sidebar ul li a:hover { color: white; padding-left: 10px; }
 
-        /* Nội dung chính */
-        .main-content { padding: 40px; grid-column: 2; }
+        .main-content {
+            padding: 40px;
+            grid-column: 2;
+        }
 
-        /* Sidebar phải */
+        /* SIDEBAR PHẢI: DANH SÁCH MÔN HỌC */
         .sidebar-right {
             background: rgba(255, 255, 255, 0.7);
             border-left: 1px solid #ddd;
@@ -54,18 +60,70 @@
             position: sticky;
             top: 0;
             backdrop-filter: blur(5px);
+            overflow-y: auto;
         }
-        .grade-section h4 { border-bottom: 2px solid var(--accent-color); padding-bottom: 5px; margin: 20px 0 10px 0; color: var(--primary-color); }
-        .subject-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .btn-sub { padding: 8px; text-align: center; background: white; border: 1px solid #ddd; text-decoration: none; color: #333; border-radius: 5px; font-size: 0.85rem; transition: 0.3s; }
-        .btn-sub:hover { background: var(--accent-color); color: white; }
-        .btn-sub.active { background: #e67e22; color: white; border-color: #e67e22; }
 
-        /* Style các thẻ từ code gốc */
-        .chapter-section { background: white; padding: 30px; margin-bottom: 40px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .grade-section h4 {
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 5px;
+            margin: 20px 0 10px 0;
+            color: var(--primary-color);
+        }
+
+        .subject-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .btn-sub {
+            padding: 8px;
+            text-align: center;
+            background: white;
+            border: 1px solid #ddd;
+            text-decoration: none;
+            color: #333;
+            border-radius: 5px;
+            font-size: 0.85rem;
+            transition: 0.3s;
+        }
+
+        .btn-sub:hover {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        .btn-sub.active {
+            background: #e67e22;
+            color: white;
+            border-color: #e67e22;
+        }
+
+        /* STYLE CÔNG THỨC GIỮ NGUYÊN */
+        .chapter-section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
         h1 { color: var(--primary-color); }
-        h3 { color: var(--accent-color); border-left: 4px solid var(--accent-color); padding-left: 10px; }
-        .formula-box { background: #f0f7ff; border: 1px solid #d1e9ff; padding: 15px; border-radius: 5px; margin: 15px 0; text-align: center; font-size: 1.1rem; }
+        h3 { 
+            color: var(--accent-color); 
+            border-left: 4px solid var(--accent-color);
+            padding-left: 10px;
+        }
+
+        .formula-box {
+            background: #f0f7ff;
+            border: 1px solid #d1e9ff;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            text-align: center;
+            font-size: 1.1rem;
+        }
 
         @media (max-width: 1200px) {
             body { grid-template-columns: 250px 1fr; }
@@ -82,13 +140,13 @@
         <h2 style="margin-top: 0;">Toán Lớp 10</h2>
         <ul>
             <li><a href="#chuong1">Chương 1: Mệnh đề - Tập hợp</a></li>
-            <li><a href="#chuong2">Chương 2: Bất phương trình...</a></li>
-            <li><a href="#chuong3">Chương 3: Hàm số bậc hai</a></li>
-            <li><a href="#chuong4">Chương 4: Hệ thức lượng</a></li>
-            <li><a href="#chuong5">Chương 5: Vectơ</a></li>
-            <li><a href="#chuong6">Chương 6: PT Đường thẳng</a></li>
-            <li><a href="#chuong7">Chương 7: Vị trí tương đối</a></li>
-            <li><a href="#chuong8">Chương 8: PT Đường tròn</a></li>
+            <li><a href="#chuong2">Chương 2: Bất phương trình bậc nhất hai ẩn</a></li>
+            <li><a href="#chuong3">Chương 3: Hàm số bậc hai và đồ thị</a></li>
+            <li><a href="#chuong4">Chương 4: Hệ thức lượng trong tam giác</a></li>
+            <li><a href="#chuong5">Chương 5: Vectơ và Biểu thức tọa độ</a></li>
+            <li><a href="#chuong6">Chương 6: Phương trình đường thẳng</a></li>
+            <li><a href="#chuong7">Chương 7: Vị trí tương đối, Góc và Khoảng cách</a></li>
+            <li><a href="#chuong8">Chương 8: Phương trình đường tròn</a></li>
             <li><a href="#chuong9">Chương 9: Ba đường Conic</a></li>
         </ul>
     </div>
@@ -100,96 +158,164 @@
         <section id="chuong1" class="chapter-section">
             <h3>Chương 1: Mệnh đề & Tập hợp</h3>
             <p><b>1. Tập hợp con:</b> \( A \subset B \Leftrightarrow \forall x (x \in A \Rightarrow x \in B) \)</p>
+            <p><b>2. Các phép toán tập hợp:</b></p>
             <ul>
                 <li>Giao: \( A \cap B = \{x \mid x \in A \text{ và } x \in B\} \)</li>
                 <li>Hợp: \( A \cup B = \{x \mid x \in A \text{ hoặc } x \in B\} \)</li>
+                <li>Hiệu: \( A \setminus B = \{x \mid x \in A \text{ và } x \notin B\} \)</li>
             </ul>
         </section>
 
         <section id="chuong2" class="chapter-section">
             <h3>Chương 2: Bất phương trình bậc nhất hai ẩn</h3>
+            <p>Dạng tổng quát: \( ax + by < c \) (hoặc \( >, \le, \ge \)).</p>
             <div class="formula-box">
-                Miền nghiệm là nửa mặt phẳng...
+                Miền nghiệm là nửa mặt phẳng không chứa bờ (hoặc chứa bờ) sau khi thay tọa độ điểm thử.
             </div>
         </section>
 
         <section id="chuong3" class="chapter-section">
             <h3>Chương 3: Hàm số bậc hai</h3>
+            <p>Hàm số: \( y = ax^2 + bx + c \quad (a \neq 0) \)</p>
+            <p><b>Tọa độ đỉnh I:</b></p>
             <div class="formula-box">
                 \( I\left( -\frac{b}{2a} ; -\frac{\Delta}{4a} \right) \)
             </div>
+            <p><b>Trục đối xứng:</b> \( x = -\frac{b}{2a} \)</p>
         </section>
 
         <section id="chuong4" class="chapter-section">
             <h3>Chương 4: Hệ thức lượng trong tam giác</h3>
+            <p><b>1. Định lý Cosin:</b></p>
             <div class="formula-box">
                 \( a^2 = b^2 + c^2 - 2bc \cdot \cos A \)
+            </div>
+            <p><b>2. Định lý Sin:</b></p>
+            <div class="formula-box">
+                \( \frac{a}{\sin A} = \frac{b}{\sin B} = \frac{c}{\sin C} = 2R \)
             </div>
         </section>
 
         <section id="chuong5" class="chapter-section">
-            <h3>Chương 5: Vectơ</h3>
+            <h3>Chương 5: Vectơ và Biểu thức tọa độ</h3>
+            <p>Cho hai vectơ \(\vec{u} = (x; y)\) và \(\vec{v} = (x'; y')\).</p>
+            <ul>
+                <li><b>Tổng và hiệu:</b> \(\vec{u} \pm \vec{v} = (x \pm x'; y \pm y')\)</li>
+                <li><b>Tích của vectơ với một số:</b> \(k\vec{u} = (kx; ky)\)</li>
+                <li><b>Độ dài vectơ:</b> \(|\vec{u}| = \sqrt{x^2 + y^2}\)</li>
+                <li><b>Tích vô hướng:</b> \(\vec{u} \cdot \vec{v} = x \cdot x' + y \cdot y'\)</li>
+            </ul>
             <div class="formula-box">
-                \(\vec{u} \cdot \vec{v} = x \cdot x' + y \cdot y'\)
+                <b>Tọa độ vectơ qua hai điểm:</b> Với \(A(x_A; y_A)\) và \(B(x_B; y_B)\): <br>
+                \(\vec{AB} = (x_B - x_A; y_B - y_A)\)
             </div>
         </section>
 
         <section id="chuong6" class="chapter-section">
             <h3>Chương 6: Phương trình đường thẳng</h3>
+            <p><b>1. Phương trình tham số:</b> Đi qua \(M_0(x_0; y_0)\) có VTCP \(\vec{u} = (u_1; u_2)\):</p>
             <div class="formula-box">
-                \(ax + by + c = 0\)
+                \(\begin{cases} x = x_0 + u_1t \\ y = y_0 + u_2t \end{cases}\)
+            </div>
+            <p><b>2. Phương trình tổng quát:</b> Đi qua \(M_0(x_0; y_0)\) có VTPT \(\vec{n} = (a; b)\):</p>
+            <div class="formula-box">
+                \(a(x - x_0) + b(y - y_0) = 0 \Leftrightarrow ax + by + c = 0\)
             </div>
         </section>
 
         <section id="chuong7" class="chapter-section">
-            <h3>Chương 7: Vị trí tương đối</h3>
-            <div class="formula-box">
-                \(d(M, \Delta) = \frac{|ax_0 + by_0 + c|}{\sqrt{a^2 + b^2}}\)
-            </div>
+            <h3>Chương 7: Vị trí tương đối, Góc và Khoảng cách</h3>
+            <ul>
+                <li><b>Góc (\(\varphi\)) giữa hai đường thẳng:</b>
+                    <div class="formula-box">
+                        \(\cos \varphi = \frac{|a_1a_2 + b_1b_2|}{\sqrt{a_1^2 + b_1^2} \cdot \sqrt{a_2^2 + b_2^2}}\)
+                    </div>
+                </li>
+                <li><b>Khoảng cách từ điểm \(M(x_0; y_0)\) đến \(\Delta: ax+by+c=0\):</b>
+                    <div class="formula-box">
+                        \(d(M, \Delta) = \frac{|ax_0 + by_0 + c|}{\sqrt{a^2 + b^2}}\)
+                    </div>
+                </li>
+            </ul>
         </section>
 
         <section id="chuong8" class="chapter-section">
             <h3>Chương 8: Phương trình đường tròn</h3>
+            <p><b>Dạng chính tắc:</b> Tâm \(I(a; b)\), bán kính \(R\).</p>
             <div class="formula-box">
                 \((x - a)^2 + (y - b)^2 = R^2\)
             </div>
+            <p><b>Dạng tổng quát:</b> \(x^2 + y^2 - 2ax - 2by + c = 0\) với \(a^2 + b^2 - c > 0\).</p>
+            <p>Bán kính: \(R = \sqrt{a^2 + b^2 - c}\)</p>
         </section>
 
         <section id="chuong9" class="chapter-section">
-            <h3>Chương 9: Ba đường Conic</h3>
+            <h2 style="color: #e67e22; border-bottom: 2px solid #e67e22;">Chương 9: Ba đường Conic</h2>
+            <h4>1. Elip (E)</h4>
             <div class="formula-box">
-                \(\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1\)
+                <b>Phương trình chính tắc:</b> \(\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1\) (với \(a > b > 0\))
             </div>
+            <ul>
+                <li>Mối liên hệ: \(c^2 = a^2 - b^2\)</li>
+                <li>Tiêu điểm: \(F_1(-c; 0), F_2(c; 0)\)</li>
+                <li>Trục lớn: \(2a\), trục nhỏ: \(2b\). Tiêu cự: \(2c\)</li>
+            </ul>
+
+            <h4>2. Hypebol (H)</h4>
+            <div class="formula-box">
+                <b>Phương trình chính tắc:</b> \(\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1\) (với \(a, b > 0\))
+            </div>
+            <ul>
+                <li>Mối liên hệ: \(c^2 = a^2 + b^2\)</li>
+                <li>Tiêu điểm: \(F_1(-c; 0), F_2(c; 0)\)</li>
+                <li>Trục thực: \(2a\), trục ảo: \(2b\). Tiêu cự: \(2c\)</li>
+            </ul>
+
+            <h4>3. Parabol (P)</h4>
+            <div class="formula-box">
+                <b>Phương trình chính tắc:</b> \(y^2 = 2px\) (với \(p > 0\))
+            </div>
+            <ul>
+                <li>Tiêu điểm: \(F\left(\frac{p}{2}; 0\right)\)</li>
+                <li>Đường chuẩn: \(\Delta: x = -\frac{p}{2}\)</li>
+                <li>Tham số tiêu: \(p\)</li>
+            </ul>
         </section>
     </div>
 
+    <!-- SIDEBAR PHẢI: DANH SÁCH CÁC MÔN HỌC -->
     <div class="sidebar-right">
         <h3 style="border: none; padding: 0; margin-top: 0;">Danh Mục Môn Học</h3>
+        
         <div class="grade-section">
             <h4>Khối 10</h4>
             <div class="subject-grid">
                 <a href="#" class="btn-sub active">Toán</a>
                 <a href="#" class="btn-sub">Vật Lý</a>
                 <a href="#" class="btn-sub">Hóa Học</a>
-                <a href="#" class="btn-sub">Văn</a>
-                <a href="#" class="btn-sub">Anh</a>
-                <a href="#" class="btn-sub">Sinh</a>
+                <a href="#" class="btn-sub">Ngữ Văn</a>
+                <a href="#" class="btn-sub">Tiếng Anh</a>
+                <a href="#" class="btn-sub">Sinh Học</a>
             </div>
         </div>
+
         <div class="grade-section">
             <h4>Khối 11</h4>
             <div class="subject-grid">
                 <a href="#" class="btn-sub">Toán</a>
                 <a href="#" class="btn-sub">Vật Lý</a>
                 <a href="#" class="btn-sub">Hóa Học</a>
+                <a href="#" class="btn-sub">Ngữ Văn</a>
             </div>
         </div>
+
         <div class="grade-section">
             <h4>Khối 12</h4>
             <div class="subject-grid">
                 <a href="#" class="btn-sub">Toán</a>
                 <a href="#" class="btn-sub">Vật Lý</a>
                 <a href="#" class="btn-sub">Hóa Học</a>
+                <a href="#" class="btn-sub">Ngữ Văn</a>
             </div>
         </div>
     </div>
