@@ -142,7 +142,105 @@
                 \( \frac{a}{\sin A} = \frac{b}{\sin B} = \frac{c}{\sin C} = 2R \)
             </div>
         </section>
+<!-- CHƯƠNG 5: VECTƠ VÀ BIỂU THỨC TỌA ĐỘ -->
+<section id="chuong5" class="chapter-section">
+    <h3>Chương 5: Vectơ và Biểu thức tọa độ</h3>
+    <p>Cho hai vectơ \(\vec{u} = (x; y)\) và \(\vec{v} = (x'; y')\).</p>
+    <ul>
+        <li><b>Tổng và hiệu:</b> \(\vec{u} \pm \vec{v} = (x \pm x'; y \pm y')\)</li>
+        <li><b>Tích của vectơ với một số:</b> \(k\vec{u} = (kx; ky)\)</li>
+        <li><b>Độ dài vectơ:</b> \(|\vec{u}| = \sqrt{x^2 + y^2}\)</li>
+        <li><b>Tích vô hướng:</b> \(\vec{u} \cdot \vec{v} = x \cdot x' + y \cdot y'\)</li>
+    </ul>
+    <div class="formula-box">
+        <b>Tọa độ vectơ qua hai điểm:</b> Với \(A(x_A; y_A)\) và \(B(x_B; y_B)\): <br>
+        \(\vec{AB} = (x_B - x_A; y_B - y_A)\)
+    </div>
+</section>
 
+<!-- CHƯƠNG 6: PHƯƠNG TRÌNH ĐƯỜNG THẲNG -->
+<section id="chuong6" class="chapter-section">
+    <h3>Chương 6: Phương trình đường thẳng</h3>
+    <p><b>1. Phương trình tham số:</b> Đi qua \(M_0(x_0; y_0)\) có VTCP \(\vec{u} = (u_1; u_2)\):</p>
+    <div class="formula-box">
+        \(\begin{cases} x = x_0 + u_1t \\ y = y_0 + u_2t \end{cases}\)
+    </div>
+    <p><b>2. Phương trình tổng quát:</b> Đi qua \(M_0(x_0; y_0)\) có VTPT \(\vec{n} = (a; b)\):</p>
+    <div class="formula-box">
+        \(a(x - x_0) + b(y - y_0) = 0 \Leftrightarrow ax + by + c = 0\)
+    </div>
+</section>
+
+<!-- CHƯƠNG 7: VỊ TRÍ TƯƠNG ĐỐI, GÓC VÀ KHOẢNG CÁCH -->
+<section id="chuong7" class="chapter-section">
+    <h3>Chương 7: Vị trí tương đối, Góc và Khoảng cách</h3>
+    <p>Cho \(\Delta_1: a_1x + b_1y + c_1 = 0\) và \(\Delta_2: a_2x + b_2y + c_2 = 0\).</p>
+    <ul>
+        <li><b>Góc (\(\varphi\)) giữa hai đường thẳng:</b>
+            <div class="formula-box">
+                \(\cos \varphi = \frac{|a_1a_2 + b_1b_2|}{\sqrt{a_1^2 + b_1^2} \cdot \sqrt{a_2^2 + b_2^2}}\)
+            </div>
+        </li>
+        <li><b>Khoảng cách từ điểm \(M(x_0; y_0)\) đến đường thẳng \(\Delta\):</b>
+            <div class="formula-box">
+                \(d(M, \Delta) = \frac{|ax_0 + by_0 + c|}{\sqrt{a^2 + b^2}}\)
+            </div>
+        </li>
+    </ul>
+</section>
+
+<!-- CHƯƠNG 8: PHƯƠNG TRÌNH ĐƯỜNG TRÒN -->
+<section id="chuong8" class="chapter-section">
+    <h3>Chương 8: Phương trình đường tròn</h3>
+    <p><b>1. Dạng chính tắc:</b> Tâm \(I(a; b)\), bán kính \(R\).</p>
+    <div class="formula-box">
+        \((x - a)^2 + (y - b)^2 = R^2\)
+    </div>
+    <p><b>2. Dạng tổng quát:</b> \(x^2 + y^2 - 2ax - 2by + c = 0\)</p>
+    <ul>
+        <li>Điều kiện là đường tròn: \(a^2 + b^2 - c > 0\)</li>
+        <li>Bán kính: \(R = \sqrt{a^2 + b^2 - c}\)</li>
+    </ul>
+</section>
+
+<!-- CHƯƠNG 9: BA ĐƯỜNG CONIC (CHI TIẾT) -->
+<section id="chuong9" class="chapter-section">
+    <h2 style="color: #e67e22; border-bottom: 2px solid #e67e22;">Chương 9: Ba đường Conic</h2>
+
+    <h4>1. Elip (E)</h4>
+    <p>Tập hợp các điểm \(M\) sao cho \(MF_1 + MF_2 = 2a\) (\(a > c\)).</p>
+    <div class="formula-box">
+        <b>Phương trình chính tắc:</b> \(\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1\) \((a > b > 0)\)
+    </div>
+    <ul>
+        <li>Mối liên hệ: \(c^2 = a^2 - b^2\)</li>
+        <li>Tiêu điểm: \(F_1(-c; 0), F_2(c; 0)\). Tiêu cự: \(2c\).</li>
+        <li>Trục lớn: \(2a\), trục nhỏ: \(2b\).</li>
+    </ul>
+
+    <h4>2. Hypebol (H)</h4>
+    <p>Tập hợp các điểm \(M\) sao cho \(|MF_1 - MF_2| = 2a\) (\(a < c\)).</p>
+    <div class="formula-box">
+        <b>Phương trình chính tắc:</b> \(\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1\) \((a, b > 0)\)
+    </div>
+    <ul>
+        <li>Mối liên hệ: \(c^2 = a^2 + b^2\)</li>
+        <li>Tiêu điểm: \(F_1(-c; 0), F_2(c; 0)\). Tiêu cự: \(2c\).</li>
+        <li>Trục thực: \(2a\), trục ảo: \(2b\).</li>
+    </ul>
+
+    <h4>3. Parabol (P)</h4>
+    <p>Tập hợp các điểm \(M\) cách đều tiêu điểm \(F\) và đường chuẩn \(\Delta\).</p>
+    <div class="formula-box">
+        <b>Phương trình chính tắc:</b> \(y^2 = 2px\) \((p > 0)\)
+    </div>
+    <ul>
+        <li>Tiêu điểm: \(F\left(\frac{p}{2}; 0\right)\)</li>
+        <li>Phương trình đường chuẩn: \(\Delta: x = -\frac{p}{2}\)</li>
+        <li>Tham số tiêu: \(p\) (khoảng cách từ tiêu điểm đến đường chuẩn).</li>
+    </ul>
+</section>
+        
     </div>
 
 </body>
