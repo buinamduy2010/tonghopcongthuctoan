@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sổ Tay Công Thức Toán 10</title>
+    <!-- Nhúng thư viện MathJax để hiển thị công thức toán đẹp hơn -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --bg-color: #f9f9f9;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            display: flex;
+            background-color: var(--bg-color);
+        }
+        /* Thanh menu bên trái */
+        .sidebar {
+            width: 250px;
+            background: var(--primary-color);
+            color: white;
+            height: 100vh;
+            position: fixed;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        .sidebar h2 {
+            font-size: 1.2rem;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            margin: 15px 0;
+        }
+        .sidebar ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .sidebar ul li a:hover {
+            color: white;
+            padding-left: 10px;
+        }
+        /* Nội dung chính bên phải */
+        .main-content {
+            margin-left: 290px;
+            padding: 40px;
+            max-width: 900px;
+        }
+        .chapter-section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h1 { color: var(--primary-color); }
+        h3 { 
+            color: var(--accent-color); 
+            border-left: 4px solid var(--accent-color);
+            padding-left: 10px;
+        }
+        .formula-box {
+            background: #f0f7ff;
+            border: 1px solid #d1e9ff;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <h2>Toán Lớp 10</h2>
+        <ul>
+            <li><a href="#chuong1">Chương 1: Mệnh đề - Tập hợp</a></li>
+            <li><a href="#chuong2">Chương 2: Bất phương trình bậc nhất hai ẩn</a></li>
+            <li><a href="#chuong3">Chương 3: Hàm số bậc hai và đồ thị</a></li>
+            <li><a href="#chuong4">Chương 4: Hệ thức lượng trong tam giác</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <h1>Tổng Hợp Công Thức Toán Học Lớp 10</h1>
+        <p>Hệ thống lại toàn bộ kiến thức quan trọng theo từng chương học.</p>
+
+        <!-- CHƯƠNG 1 -->
+        <section id="chuong1" class="chapter-section">
+            <h3>Chương 1: Mệnh đề & Tập hợp</h3>
+            <p><b>1. Tập hợp con:</b> \( A \subset B \Leftrightarrow \forall x (x \in A \Rightarrow x \in B) \)</p>
+            <p><b>2. Các phép toán tập hợp:</b></p>
+            <ul>
+                <li>Giao: \( A \cap B = \{x \mid x \in A \text{ và } x \in B\} \)</li>
+                <li>Hợp: \( A \cup B = \{x \mid x \in A \text{ hoặc } x \in B\} \)</li>
+                <li>Hiệu: \( A \setminus B = \{x \mid x \in A \text{ và } x \notin B\} \)</li>
+            </ul>
+        </section>
+
+        <!-- CHƯƠNG 2 -->
+        <section id="chuong2" class="chapter-section">
+            <h3>Chương 2: Bất phương trình bậc nhất hai ẩn</h3>
+            <p>Dạng tổng quát: \( ax + by < c \) (hoặc \( >, \le, \ge \)).</p>
+            <div class="formula-box">
+                Miền nghiệm là nửa mặt phẳng không chứa bờ (hoặc chứa bờ) sau khi thay tọa độ điểm thử.
+            </div>
+        </section>
+
+        <!-- CHƯƠNG 3 -->
+        <section id="chuong3" class="chapter-section">
+            <h3>Chương 3: Hàm số bậc hai</h3>
+            <p>Hàm số: \( y = ax^2 + bx + c \quad (a \neq 0) \)</p>
+            <p><b>Tọa độ đỉnh I:</b></p>
+            <div class="formula-box">
+                \( I\left( -\frac{b}{2a} ; -\frac{\Delta}{4a} \right) \)
+            </div>
+            <p><b>Trục đối xứng:</b> \( x = -\frac{b}{2a} \)</p>
+        </section>
+
+        <!-- CHƯƠNG 4 -->
+        <section id="chuong4" class="chapter-section">
+            <h3>Chương 4: Hệ thức lượng trong tam giác</h3>
+            <p><b>1. Định lý Cosin:</b></p>
+            <div class="formula-box">
+                \( a^2 = b^2 + c^2 - 2bc \cdot \cos A \)
+            </div>
+            <p><b>2. Định lý Sin:</b></p>
+            <div class="formula-box">
+                \( \frac{a}{\sin A} = \frac{b}{\sin B} = \frac{c}{\sin C} = 2R \)
+            </div>
+        </section>
+
+    </div>
+
+</body>
+</html>
