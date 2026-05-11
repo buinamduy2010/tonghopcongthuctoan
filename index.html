@@ -3,45 +3,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sổ Tay Công Thức Toán 10 - duydzcogisai</title>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Sổ Tay Công Thức Toán 10</title>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     
     <style>
-        :root {
-            --primary-color: #2c3e50;
-            --accent-color: #3498db;
-            --bg-color: #f9f9f9;
-            --nav-height: 80px;
-        }
-
+        * { box-sizing: border-box; }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
+            font-family: Arial, sans-serif;
             margin: 0;
-            background-color: var(--bg-color);
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 150 150'%3E%3Ctext x='10' y='30' fill='%233498db' fill-opacity='0.05' font-family='Arial' font-size='25'%3E∑%3C/text%3E%3Ctext x='100' y='50' fill='%233498db' fill-opacity='0.05' font-family='Arial' font-size='20'%3Eπ%3C/text%3E%3Ctext x='40' y='100' fill='%233498db' fill-opacity='0.05' font-family='Arial' font-size='30'%3E∫%3C/text%3E%3Ctext x='120' y='120' fill='%233498db' fill-opacity='0.05' font-family='Arial' font-size='22'%3E∞%3C/text%3E%3Ctext x='80' y='20' fill='%233498db' fill-opacity='0.05' font-family='Arial' font-size='18'%3E√%3C/text%3E%3C/svg%3E");
-            background-attachment: fixed;
+            padding-top: 70px; /* Chừa chỗ cho thanh ngang */
+            background: #f4f4f4;
         }
 
-        /* --- THANH ĐIỀU HƯỚNG NGANG --- */
-        .top-nav {
+        /* --- THANH NGANG TRÊN CÙNG --- */
+        .navbar {
             position: fixed;
             top: 0; left: 0; right: 0;
-            height: var(--nav-height);
-            background: white;
+            height: 70px;
+            background: #2c3e50;
+            color: white;
             display: flex;
             align-items: center;
             padding: 0 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            z-index: 9999;
-            overflow-x: auto;
+            z-index: 1000;
         }
 
-        .nav-group {
-            display: flex;
-            align-items: center;
-            padding: 0 15px;
-            border-right: 1px solid #eee;
+        .nav-item {
+            color: white;
+            text-decoration: none;
+            margin-right: 15px;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
         }
+
+        .nav-item:hover { background: #34495e; }
+
+        #grade10-subjects {
+            display: none; /* Ẩn mặc định */
+            background: #ecf0f1;
+            padding: 5px;
+            border-radius: 5px;
+            margin-left: 10px;
+        }
+        #grade10-subjects a { color: #2c3e50; text-decoration: none; margin: 0 10px; font-weight: bold; }
+
+        /* --- CẤU TRÚC CHÍNH --- */
+        .wrapper {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Nội dung chính */
+        .main {
+            flex: 1;
+            margin: 20px 280px 20px 20px; /* Chừa lề phải cho mục lục */
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            min-height: 2000px; /* Để có chỗ cuộn thử video */
+        }
+
+        /* Mục lục bên phải (KHÔNG CLICK ĐƯỢC) */
+        .toc-right {
+            position: fixed;
+            right: 0;
+            top: 70px;
+            width: 250px;
+            height: 100%;
+            background: #fff;
+            border-left: 2px solid #ddd;
+            padding: 20px;
+            pointer-events: none; /* QUAN TRỌNG: KHÔNG CHO BẤM */
+            user-select: none;
+            opacity: 0.7;
+        }
+
+        /* --- VIDEO THUYẾT TRÌNH --- */
+        .video-box {
+            width: 100%;
+            max-width: 700px;
+            margin: 0 auto 20px;
+            background: #000;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        video { width: 100%; display: block; }
+
+        /* Khi video thu nhỏ */
+        .video-box.sticky {
+            position: fixed;
+            bottom: 20px;
+            right: 270px; /* Tránh đè lên mục lục */
+            width: 250px;
+            z-index: 2000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        section { padding: 20px; border-bottom: 1px solid #eee; }
+        h3 { color: #3498db; }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <b style="margin-right: 20px;">duydzcogisai</b>
+        <span>Chương: </span>
+        <a href="#c1" class="nav-item">1</a>
+        <a href="#c2" class="nav-item">2</a>
+        <a href="#c3" class="nav-item">3</a>
+        <a href="#c9" class="nav-item">9</a>
+        
+        <span style="margin-left: 20px;">Lớp: </span>
+        <span class="nav-item" onclick="showSubjects()">Lớp 10</span>
+        <span class="nav-item">Lớp 11</span>
+        <span class="nav-item">Lớp 12</span>
+
+        <div id="grade10-subjects">
+            <a href="#">Toán</a> <a href="#">Lý</a> <a href="#">Hóa</a> <a href="#">Sinh</a>
+        </div>
+    </div>
+
+    <div class="wrapper">
+        <div class="main">
+            <div class="video-box" id="vidContainer">
+                <video id="myVideo" controls>
+                    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                </video>
+            </div>
+
+            <h1 style="text-align: center;">TỔNG HỢP CÔNG THỨC TOÁN 10</h1>
+
+            <section id="c1">
+                <h3>Chương 1: Mệnh đề - Tập hợp</h3>
+                <p>Công thức: \( A \cup B \)</p>
+            </section>
+
+            <section id="c2">
+                <h3>Chương 2: Bất phương trình</h3>
+                <p>Nội dung chương 2...</p>
+            </section>
+
+            <section id="c9">
+                <h3>Chương 9: Ba đường Conic</h3>
+                <p>Phương trình Elip: \( \frac{x^2}{a^2} + \frac{y^2}{b^2} = 1 \)</p>
+            </section>
+        </div>
+
+        <div class="toc-right">
+            <h4>MỤC LỤC CHƯƠNG</h4>
+            <p>Chương 1: Mệnh đề</p>
+            <p>Chương 2: Bất phương trình</p>
+            <p>Chương 3: Hàm số bậc hai</p>
+            <p>Chương 4: Hệ thức lượng</p>
+            <p>Chương 5: Vectơ & Tọa độ</p>
+            <p>Chương 6: PT Đường thẳng</p>
+            <p>Chương 7: Vị trí & Khoảng cách</p>
+            <p>Chương 8: PT Đường tròn</p>
+            <p>Chương 9: Ba đường Conic</p>
+        </div>
+    </div>
+
+    <script>
+        // Hiện môn học lớp 10
+        function showSubjects() {
+            var x = document.getElementById("grade10-subjects");
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "block";
+                x.style.display = "inline-block";
+            }
+        }
+
+        // Xử lý video thu nhỏ
+        var vid = document.getElementById("vidContainer");
+        var offset = vid.offsetTop + vid.offsetHeight;
+
+        window.onscroll = function() {
+            if (window.pageYOffset > offset) {
+                vid.classList.add("sticky");
+            } else {
+                vid.classList.remove("sticky");
+            }
+        };
+    </script>
+
+</body>
+</html>
