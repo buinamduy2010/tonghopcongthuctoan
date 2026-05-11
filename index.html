@@ -3,59 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sổ Tay Công Thức Toán 10 - duydzcogisai</title>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <title>Sổ Tay Công Thức Toán - duydzcogisai</title>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     
     <style>
         :root {
             --primary: #2c3e50;
             --accent: #3498db;
             --bg: #f9f9f9;
+            --nav-height: 80px; /* Độ cao thanh ngang */
         }
+
+        * { box-sizing: border-box; }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
+            font-family: 'Segoe UI', Arial, sans-serif;
             margin: 0;
             background-color: var(--bg);
-            padding-top: 80px; /* Chừa chỗ cho thanh ngang */
+            /* background-image giữ nguyên */
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 150 150'%3E%3Ctext x='10' y='30' fill='%233498db' fill-opacity='0.05' font-size='25'%3E∑%3C/text%3E%3Ctext x='100' y='50' fill='%233498db' fill-opacity='0.05' font-size='20'%3Eπ%3C/text%3E%3C/svg%3E");
             background-attachment: fixed;
+            /* Thêm padding-top để không bị thanh nav che nội dung */
+            padding-top: var(--nav-height);
         }
 
-        /* --- THANH NGANG TRÊN CÙNG --- */
-        .navbar {
+        /* --- THANH ĐIỀU HƯỚNG NGANG TRÊN CÙNG (GỌN LẠI) --- */
+        .top-navbar {
             position: fixed;
             top: 0; left: 0; right: 0;
-            height: 70px;
-            background: var(--primary);
-            color: white;
+            height: var(--nav-height);
+            background: white;
             display: flex;
             align-items: center;
-            padding: 0 20px;
-            z-index: 9999;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            justify-content: space-between; /* Đẩy nội dung ra 2 bên */
+            padding: 0 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 9999; /* Luôn nằm trên cùng */
         }
 
-        .brand { font-weight: bold; color: var(--accent); margin-right: 30px; font-size: 1.2rem; }
-        .nav-links { display: flex; gap: 15px; align-items: center; }
-        .nav-links a { color: #bdc3c7; text-decoration: none; font-size: 14px; transition: 0.3s; }
-        .nav-links a:hover { color: white; }
+        .navbar-brand { font-weight: bold; color: var(--accent); font-size: 1.3rem; }
 
-        /* --- NỘI DUNG --- */
-        .container {
-            max-width: 850px;
+        .navbar-nav { display: flex; gap: 20px; align-items: center; }
+
+        .nav-item {
+            color: #555;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .nav-item:hover { color: var(--accent); }
+
+        /* Vùng môn học Lớp 10 ẩn ban đầu */
+        #subjects-layer {
+            position: fixed;
+            top: var(--nav-height); left: 0; right: 0;
+            background: #ecf0f1;
+            padding: 10px 40px;
+            display: none; /* Ẩn mặc định */
+            gap: 20px;
+            border-bottom: 1px solid #ddd;
+            z-index: 9998;
+        }
+
+        #subjects-layer a { text-decoration: none; color: var(--primary); font-weight: bold; font-size: 13px; }
+
+        /* --- BỐ CỤC NỘI DUNG CHÍNH --- */
+        .main-container {
+            max-width: 900px;
             margin: 0 auto;
             padding: 20px;
+            position: relative; /* Để video dính vào lề phải */
         }
 
-        .chapter-box {
+        /* --- VIDEO STICKY MƯỢT MÀ (KHÔNG BỊ GIẬT) --- */
+        .video-box-sticky {
+            position: sticky; /* Sử dụng sticky của CSS */
+            top: calc(var(--nav-height) + 20px); /* Dính dưới thanh nav 20px */
+            right: 0;
+            width: 320px; /* Chiều rộng video mini */
+            aspect-ratio: 16/9;
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            float: right; /* Đẩy video sang phải */
+            margin-left: 30px;
+            margin-bottom: 20px;
+            z-index: 100;
+        }
+        
+        @media (max-width: 1000px) { .video-box-sticky { display: none; } } /* Ẩn video trên màn hình nhỏ */
+
+        video { width: 100%; height: 100%; display: block; border-radius: 10px; }
+
+        .content-main { flex: 1; }
+
+        .chapter-section {
             background: white;
             padding: 30px;
             margin-bottom: 30px;
             border-radius: 12px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            /* Đảm bảo ID chương hoạt động khi cuộn */
+            scroll-margin-top: calc(var(--nav-height) + 20px);
         }
 
         .formula-box {
@@ -67,119 +120,80 @@
             margin: 15px 0;
         }
 
-        /* Video mini tự động */
-        .video-box {
-            width: 100%;
-            margin-bottom: 30px;
-            border-radius: 12px;
-            overflow: hidden;
-            background: #000;
-        }
-        .video-box.sticky {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 280px;
-            z-index: 10000;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-        }
-        video { width: 100%; display: block; }
-
-        h1 { color: var(--primary); text-align: center; }
+        h1 { color: var(--primary); text-align: center; margin-top: 0; }
         h3 { color: var(--accent); border-left: 4px solid var(--accent); padding-left: 10px; }
-
-        /* Mục lục phải (Không cho bấm) */
-        .toc-side {
-            position: fixed;
-            right: 20px;
-            top: 90px;
-            width: 200px;
-            background: rgba(255,255,255,0.7);
-            padding: 15px;
-            border-radius: 10px;
-            font-size: 12px;
-            pointer-events: none;
-            opacity: 0.6;
-        }
-        @media (max-width: 1100px) { .toc-side { display: none; } }
     </style>
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="brand">duydzcogisai</div>
-        <div class="nav-links">
+    <nav class="top-navbar">
+        <div class="navbar-brand">duydzcogisai</div>
+        <div class="navbar-nav">
             <span>Chương:</span>
-            <a href="#c1">1</a> <a href="#c2">2</a> <a href="#c3">3</a> <a href="#c4">4</a> 
-            <a href="#c5">5</a> <a href="#c6">6</a> <a href="#c7">7</a> <a href="#c8">8</a> <a href="#c9">9</a>
-            <span style="margin-left: 15px;">Lớp:</span>
-            <a href="#" style="color:white; font-weight:bold;">10</a>
-            <a href="#">11</a>
-            <a href="#">12</a>
+            <a href="#c1" class="nav-item">1</a>
+            <a href="#c2" class="nav-item">2</a>
+            <a href="#c3" class="nav-item">3</a>
+            <a href="#c4" class="nav-item">4</a>
+            <a href="#c5" class="nav-item">5</a>
+            <a href="#c6" class="nav-item">6</a>
+            <a href="#c7" class="nav-item">7</a>
+            <a href="#c8" class="nav-item">8</a>
+            <a href="#c9" class="nav-item">9</a>
+            
+            <span style="margin-left: 20px;">Lớp:</span>
+            <span class="nav-item" onclick="toggleSubjectsLayer()">Lớp 10</span>
+            <span class="nav-item">Lớp 11</span>
+            <span class="nav-item">Lớp 12</span>
         </div>
     </nav>
 
-    <div class="toc-side">
-        <b>MỤC LỤC CHƯƠNG</b><br>
-        1. Mệnh đề - Tập hợp<br>
-        2. Bất phương trình<br>
-        3. Hàm số bậc hai<br>
-        4. Hệ thức lượng<br>
-        5. Vectơ & Tọa độ<br>
-        6. PT Đường thẳng<br>
-        7. Vị trí & Khoảng cách<br>
-        8. PT Đường tròn<br>
-        9. Ba đường Conic
+    <div id="subjects-layer">
+        <a href="#">TOÁN</a> <a href="#">LÍ</a> <a href="#">HÓA</a> <a href="#">SINH</a> <a href="#">VĂN</a> <a href="#">ANH</a>
     </div>
 
-    <div class="container">
-        <div class="video-box" id="vidBox">
+    <div class="main-container">
+        <div class="video-box-sticky" id="stickyVideo">
             <video controls>
                 <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                Trình duyệt của bạn không hỗ trợ video.
             </video>
         </div>
 
-        <h1>Tổng Hợp Công Thức Toán Học Lớp 10</h1>
+        <div class="content-main">
+            <h1>Tổng Hợp Công Thức Toán Học Lớp 10</h1>
 
-        <section id="c1" class="chapter-box">
-            <h3>Chương 1: Mệnh đề & Tập hợp</h3>
-            <p><b>1. Tập hợp con:</b> \( A \subset B \Leftrightarrow \forall x (x \in A \Rightarrow x \in B) \)</p>
-            <p><b>2. Các phép toán tập hợp:</b></p>
-            <ul>
-                <li>Giao: \( A \cap B = \{x \mid x \in A \text{ và } x \in B\} \)</li>
-                <li>Hợp: \( A \cup B = \{x \mid x \in A \text{ hoặc } x \in B\} \)</li>
-                <li>Hiệu: \( A \setminus B = \{x \mid x \in A \text{ và } x \notin B\} \)</li>
-            </ul>
-        </section>
+            <section id="c1" class="chapter-section">
+                <h3>Chương 1: Mệnh đề & Tập hợp</h3>
+                <p><b>1. Tập hợp con:</b> \( A \subset B \Leftrightarrow \forall x (x \in A \Rightarrow x \in B) \)</p>
+                <p><b>2. Các phép toán tập hợp:</b></p>
+                <ul>
+                    <li>Giao: \( A \cap B = \{x \mid x \in A \text{ và } x \in B\} \)</li>
+                    <li>Hợp: \( A \cup B = \{x \mid x \in A \text{ hoặc } x \in B\} \)</li>
+                    <li>Hiệu: \( A \setminus B = \{x \mid x \in A \text{ và } x \notin B\} \)</li>
+                </ul>
+            </section>
 
-        <section id="c2" class="chapter-box">
-            <h3>Chương 2: Bất phương trình bậc nhất hai ẩn</h3>
-            <p>Dạng tổng quát: \( ax + by < c \)</p>
-            <div class="formula-box">
-                Miền nghiệm là nửa mặt phẳng không chứa bờ (hoặc chứa bờ) sau khi thay tọa độ điểm thử.
-            </div>
-        </section>
+            <section id="c2" class="chapter-section">
+                <h3>Chương 2: Bất phương trình bậc nhất hai ẩn</h3>
+                <p>Dạng tổng quát: \( ax + by < c \)</p>
+                <div class="formula-box">Miền nghiệm là nửa mặt phẳng...</div>
+            </section>
 
-        <section id="c9" class="chapter-box">
-            <h3>Chương 9: Ba đường Conic</h3>
-            <p><b>1. Elip (E):</b> \(\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1\)</p>
-            <p><b>2. Hypebol (H):</b> \(\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1\)</p>
-            <p><b>3. Parabol (P):</b> \(y^2 = 2px\)</p>
-        </section>
+            <section id="c9" class="chapter-section">
+                <h3>Chương 9: Ba đường Conic</h3>
+                <p><b>1. Elip (E):</b> \(\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1\)</p>
+                <p><b>2. Hypebol (H):</b> \(\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1\)</p>
+                <p><b>3. Parabol (P):</b> \(y^2 = 2px\)</p>
+            </section>
+        </div>
     </div>
 
     <script>
-        // Xử lý video mini khi cuộn trang
-        const vidBox = document.getElementById('vidBox');
-        const trigger = vidBox.offsetTop + vidBox.offsetHeight;
-
-        window.onscroll = function() {
-            if (window.pageYOffset > trigger) {
-                vidBox.classList.add('sticky');
-            } else {
-                vidBox.classList.remove('sticky');
-            }
-        };
+        // Hàm bật/tắt vùng môn học Lớp 10
+        function toggleSubjectsLayer() {
+            var layer = document.getElementById("subjects-layer");
+            layer.style.display = (layer.style.display === "flex") ? "none" : "flex";
+        }
     </script>
 </body>
 </html>
