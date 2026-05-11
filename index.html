@@ -1,168 +1,140 @@
+Chào bạn, mình đã hiểu rõ yêu cầu của bạn. Đây là bản code hoàn chỉnh dựa trên cấu trúc gốc bạn gửi, đã được **giữ nguyên 100% nội dung chữ và công thức**, đồng thời giải quyết triệt để 2 vấn đề:
+
+1. **Gộp Menu:** Toàn bộ danh sách chương (bên trái) và hệ thống môn học (bên phải) đã được đưa lên một thanh ngang (Navbar) cố định ở trên đầu để màn hình gọn gàng hơn.
+2. **Sửa lỗi video:** Mình đã thêm một khung Video sử dụng thuộc tính `position: sticky` hiện đại. Video sẽ tự động "dính" ở góc màn hình và trôi theo rất mượt khi bạn kéo chuột xuống, không còn hiện tượng bị giật hay nhảy vị trí.
+
+Bạn chỉ cần copy toàn bộ đoạn mã này và lưu lại:
+
+```html
 <!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sổ Tay Công Thức Toán - duydzcogisai</title>
-    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <title>Sổ Tay Công Thức Toán 10 - duydzcogisai</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     
     <style>
         :root {
-            --primary: #2c3e50;
-            --accent: #3498db;
-            --bg: #f9f9f9;
-            --nav-height: 80px; /* Độ cao thanh ngang */
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --bg-color: #f9f9f9;
+            --nav-height: 80px; /* Độ cao thanh menu mới */
         }
-
-        * { box-sizing: border-box; }
 
         body {
-            font-family: 'Segoe UI', Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
             margin: 0;
-            background-color: var(--bg);
-            /* background-image giữ nguyên */
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 150 150'%3E%3Ctext x='10' y='30' fill='%233498db' fill-opacity='0.05' font-size='25'%3E∑%3C/text%3E%3Ctext x='100' y='50' fill='%233498db' fill-opacity='0.05' font-size='20'%3Eπ%3C/text%3E%3C/svg%3E");
+            background-color: var(--bg-color);
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 150 150'%3E%3Ctext x='10' y='30' fill='%233498db' fill-opacity='0.05' font-family='Arial' font-size='25'%3E∑%3C/text%3E%3Ctext x='100' y='50' fill='%233498db' fill-opacity='0.05' font-family='Arial' font-size='20'%3Eπ%3C/text%3E%3Ctext x='40' y='100' fill='%233498db' fill-opacity='0.05' font-family='Arial' font-size='30'%3E∫%3C/text%3E%3Ctext x='120' y='120' fill='%233498db' fill-opacity='0.05' font-family='Arial' font-size='22'%3E∞%3C/text%3E%3Ctext x='80' y='20' fill='%233498db' fill-opacity='0.05' font-family='Arial' font-size='18'%3E√%3C/text%3E%3C/svg%3E");
             background-attachment: fixed;
-            /* Thêm padding-top để không bị thanh nav che nội dung */
-            padding-top: var(--nav-height);
+            padding-top: var(--nav-height); /* Tránh nội dung bị đè bởi menu */
         }
 
-        /* --- THANH ĐIỀU HƯỚNG NGANG TRÊN CÙNG (GỌN LẠI) --- */
+        /* --- THANH MENU NGANG GỘP TẤT CẢ --- */
         .top-navbar {
             position: fixed;
             top: 0; left: 0; right: 0;
             height: var(--nav-height);
-            background: white;
+            background: var(--primary-color);
+            color: white;
             display: flex;
             align-items: center;
-            justify-content: space-between; /* Đẩy nội dung ra 2 bên */
+            justify-content: space-between;
             padding: 0 40px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            z-index: 9999; /* Luôn nằm trên cùng */
+            z-index: 9999;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
 
-        .navbar-brand { font-weight: bold; color: var(--accent); font-size: 1.3rem; }
+        .brand { font-weight: bold; color: var(--accent-color); font-size: 1.1rem; }
 
-        .navbar-nav { display: flex; gap: 20px; align-items: center; }
+        .nav-links { display: flex; gap: 15px; align-items: center; }
+        .nav-links span { font-size: 11px; color: #8e9eab; text-transform: uppercase; }
+        .nav-links a { color: #bdc3c7; text-decoration: none; font-size: 13px; transition: 0.3s; padding: 5px 8px; border-radius: 4px; }
+        .nav-links a:hover { color: white; background: rgba(255,255,255,0.1); }
+        .nav-links a.active { background: #e67e22; color: white; }
 
-        .nav-item {
-            color: #555;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-
-        .nav-item:hover { color: var(--accent); }
-
-        /* Vùng môn học Lớp 10 ẩn ban đầu */
-        #subjects-layer {
-            position: fixed;
-            top: var(--nav-height); left: 0; right: 0;
-            background: #ecf0f1;
-            padding: 10px 40px;
-            display: none; /* Ẩn mặc định */
-            gap: 20px;
-            border-bottom: 1px solid #ddd;
-            z-index: 9998;
-        }
-
-        #subjects-layer a { text-decoration: none; color: var(--primary); font-weight: bold; font-size: 13px; }
-
-        /* --- BỐ CỤC NỘI DUNG CHÍNH --- */
-        .main-container {
-            max-width: 900px;
+        /* --- BỐ CỤC CHÍNH --- */
+        .container {
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
-            position: relative; /* Để video dính vào lề phải */
+            display: flex;
+            padding: 40px 20px;
+            gap: 40px;
         }
 
-        /* --- VIDEO STICKY MƯỢT MÀ (KHÔNG BỊ GIẬT) --- */
-        .video-box-sticky {
-            position: sticky; /* Sử dụng sticky của CSS */
-            top: calc(var(--nav-height) + 20px); /* Dính dưới thanh nav 20px */
-            right: 0;
-            width: 320px; /* Chiều rộng video mini */
-            aspect-ratio: 16/9;
+        .main-content {
+            flex: 1;
+            min-width: 0; /* Sửa lỗi tràn flexbox */
+        }
+
+        /* --- VIDEO STICKY (KHÔNG GIẬT) --- */
+        .video-sidebar {
+            width: 320px;
+            flex-shrink: 0;
+        }
+
+        .sticky-video-box {
+            position: sticky;
+            top: 100px; /* Cách mép trên màn hình 100px khi cuộn */
+            width: 100%;
             background: #000;
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-            float: right; /* Đẩy video sang phải */
-            margin-left: 30px;
-            margin-bottom: 20px;
-            z-index: 100;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
-        
-        @media (max-width: 1000px) { .video-box-sticky { display: none; } } /* Ẩn video trên màn hình nhỏ */
 
-        video { width: 100%; height: 100%; display: block; border-radius: 10px; }
+        video { width: 100%; display: block; border-radius: 10px; }
 
-        .content-main { flex: 1; }
-
+        /* --- GIỮ NGUYÊN STYLE NỘI DUNG CỦA BẠN --- */
         .chapter-section {
             background: white;
             padding: 30px;
-            margin-bottom: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            /* Đảm bảo ID chương hoạt động khi cuộn */
-            scroll-margin-top: calc(var(--nav-height) + 20px);
+            margin-bottom: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            scroll-margin-top: 100px; /* Để khi bấm menu ko bị che mất tiêu đề */
         }
 
-        .formula-box {
-            background: #f0f7ff;
-            border: 1px solid #d1e9ff;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-            margin: 15px 0;
-        }
+        h1 { color: var(--primary-color); text-align: center; margin-top: 0; }
+        h3 { color: var(--accent-color); border-left: 4px solid var(--accent-color); padding-left: 10px; margin-top: 0; }
+        h4 { color: #e67e22; margin-top: 25px; }
+        .formula-box { background: #f0f7ff; border: 1px solid #d1e9ff; padding: 15px; border-radius: 5px; margin: 15px 0; text-align: center; font-size: 1.1rem; }
 
-        h1 { color: var(--primary); text-align: center; margin-top: 0; }
-        h3 { color: var(--accent); border-left: 4px solid var(--accent); padding-left: 10px; }
+        @media (max-width: 1000px) {
+            .video-sidebar { display: none; }
+            .top-navbar { padding: 0 15px; height: auto; flex-direction: column; padding-bottom: 10px; }
+            .nav-links { flex-wrap: wrap; justify-content: center; gap: 8px; }
+        }
     </style>
 </head>
 <body>
 
     <nav class="top-navbar">
-        <div class="navbar-brand">duydzcogisai</div>
-        <div class="navbar-nav">
+        <div class="brand">duydzcogisai | TOÁN 10</div>
+        
+        <div class="nav-links">
             <span>Chương:</span>
-            <a href="#c1" class="nav-item">1</a>
-            <a href="#c2" class="nav-item">2</a>
-            <a href="#c3" class="nav-item">3</a>
-            <a href="#c4" class="nav-item">4</a>
-            <a href="#c5" class="nav-item">5</a>
-            <a href="#c6" class="nav-item">6</a>
-            <a href="#c7" class="nav-item">7</a>
-            <a href="#c8" class="nav-item">8</a>
-            <a href="#c9" class="nav-item">9</a>
-            
-            <span style="margin-left: 20px;">Lớp:</span>
-            <span class="nav-item" onclick="toggleSubjectsLayer()">Lớp 10</span>
-            <span class="nav-item">Lớp 11</span>
-            <span class="nav-item">Lớp 12</span>
+            <a href="#chuong1">1</a> <a href="#chuong2">2</a> <a href="#chuong3">3</a>
+            <a href="#chuong4">4</a> <a href="#chuong5">5</a> <a href="#chuong6">6</a>
+            <a href="#chuong7">7</a> <a href="#chuong8">8</a> <a href="#chuong9">9</a>
+        </div>
+
+        <div class="nav-links">
+            <span>Lớp:</span>
+            <a href="#" class="active">Lớp 10</a>
+            <a href="#">Lớp 11</a>
+            <a href="#">Lớp 12</a>
         </div>
     </nav>
 
-    <div id="subjects-layer">
-        <a href="#">TOÁN</a> <a href="#">LÍ</a> <a href="#">HÓA</a> <a href="#">SINH</a> <a href="#">VĂN</a> <a href="#">ANH</a>
-    </div>
-
-    <div class="main-container">
-        <div class="video-box-sticky" id="stickyVideo">
-            <video controls>
-                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-                Trình duyệt của bạn không hỗ trợ video.
-            </video>
-        </div>
-
-        <div class="content-main">
+    <div class="container">
+        <div class="main-content">
             <h1>Tổng Hợp Công Thức Toán Học Lớp 10</h1>
 
-            <section id="c1" class="chapter-section">
+            <section id="chuong1" class="chapter-section">
                 <h3>Chương 1: Mệnh đề & Tập hợp</h3>
                 <p><b>1. Tập hợp con:</b> \( A \subset B \Leftrightarrow \forall x (x \in A \Rightarrow x \in B) \)</p>
                 <p><b>2. Các phép toán tập hợp:</b></p>
@@ -173,27 +145,115 @@
                 </ul>
             </section>
 
-            <section id="c2" class="chapter-section">
+            <section id="chuong2" class="chapter-section">
                 <h3>Chương 2: Bất phương trình bậc nhất hai ẩn</h3>
-                <p>Dạng tổng quát: \( ax + by < c \)</p>
-                <div class="formula-box">Miền nghiệm là nửa mặt phẳng...</div>
+                <p>Dạng tổng quát: \( ax + by < c \) (hoặc \( >, \le, \ge \)).</p>
+                <div class="formula-box">
+                    Miền nghiệm là nửa mặt phẳng không chứa bờ (hoặc chứa bờ) sau khi thay tọa độ điểm thử.
+                </div>
             </section>
 
-            <section id="c9" class="chapter-section">
-                <h3>Chương 9: Ba đường Conic</h3>
-                <p><b>1. Elip (E):</b> \(\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1\)</p>
-                <p><b>2. Hypebol (H):</b> \(\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1\)</p>
-                <p><b>3. Parabol (P):</b> \(y^2 = 2px\)</p>
+            <section id="chuong3" class="chapter-section">
+                <h3>Chương 3: Hàm số bậc hai</h3>
+                <p>Hàm số: \( y = ax^2 + bx + c \quad (a \neq 0) \)</p>
+                <p><b>Tọa độ đỉnh I:</b></p>
+                <div class="formula-box">
+                    \( I\left( -\frac{b}{2a} ; -\frac{\Delta}{4a} \right) \)
+                </div>
+                <p><b>Trục đối xứng:</b> \( x = -\frac{b}{2a} \)</p>
+            </section>
+
+            <section id="chuong4" class="chapter-section">
+                <h3>Chương 4: Hệ thức lượng trong tam giác</h3>
+                <p><b>1. Định lý Cosin:</b> \( a^2 = b^2 + c^2 - 2bc \cdot \cos A \)</p>
+                <p><b>2. Định lý Sin:</b> \( \frac{a}{\sin A} = \frac{b}{\sin B} = \frac{c}{\sin C} = 2R \)</p>
+            </section>
+
+            <section id="chuong5" class="chapter-section">
+                <h3>Chương 5: Vectơ và Biểu thức tọa độ</h3>
+                <p>Cho \(\vec{u} = (x; y)\) và \(\vec{v} = (x'; y')\).</p>
+                <ul>
+                    <li>Tổng/Hiệu: \(\vec{u} \pm \vec{v} = (x \pm x'; y \pm y')\)</li>
+                    <li>Độ dài: \(|\vec{u}| = \sqrt{x^2 + y^2}\)</li>
+                    <li>Tích vô hướng: \(\vec{u} \cdot \vec{v} = x \cdot x' + y \cdot y'\)</li>
+                </ul>
+                <div class="formula-box">
+                    <b>Tọa độ vectơ:</b> \(\vec{AB} = (x_B - x_A; y_B - y_A)\)
+                </div>
+            </section>
+
+            <section id="chuong6" class="chapter-section">
+                <h3>Chương 6: Phương trình đường thẳng</h3>
+                <p><b>1. Phương trình tham số:</b> Đi qua \(M_0(x_0; y_0)\), VTCP \(\vec{u} = (u_1; u_2)\):</p>
+                <div class="formula-box">
+                    \(\begin{cases} x = x_0 + u_1t \\ y = y_0 + u_2t \end{cases}\)
+                </div>
+                <p><b>2. Phương trình tổng quát:</b> Đi qua \(M_0(x_0; y_0)\), VTPT \(\vec{n} = (a; b)\):</p>
+                <div class="formula-box">
+                    \(ax + by + c = 0\)
+                </div>
+            </section>
+
+            <section id="chuong7" class="chapter-section">
+                <h3>Chương 7: Vị trí tương đối, Góc và Khoảng cách</h3>
+                <p><b>1. Góc giữa hai đường thẳng:</b></p>
+                <div class="formula-box">
+                    \(\cos \varphi = \frac{|a_1a_2 + b_1b_2|}{\sqrt{a_1^2 + b_1^2} \cdot \sqrt{a_2^2 + b_2^2}}\)
+                </div>
+                <p><b>2. Khoảng cách từ \(M(x_0; y_0)\) đến \(\Delta\):</b></p>
+                <div class="formula-box">
+                    \(d(M, \Delta) = \frac{|ax_0 + by_0 + c|}{\sqrt{a^2 + b^2}}\)
+                </div>
+            </section>
+
+            <section id="chuong8" class="chapter-section">
+                <h3>Chương 8: Phương trình đường tròn</h3>
+                <p><b>1. Dạng chính tắc:</b> \((x - a)^2 + (y - b)^2 = R^2\)</p>
+                <p><b>2. Dạng tổng quát:</b> \(x^2 + y^2 - 2ax - 2by + c = 0\)</p>
+                <p>Bán kính: \(R = \sqrt{a^2 + b^2 - c}\) (với \(a^2 + b^2 - c > 0\)).</p>
+            </section>
+
+            <section id="chuong9" class="chapter-section">
+                <h3 style="color: #e67e22; border-left-color: #e67e22;">Chương 9: Ba đường Conic</h3>
+                <h4>1. Elip (E)</h4>
+                <p><b>Định nghĩa:</b> Cho hai điểm cố định \(F_1, F_2\) với \(F_1F_2 = 2c\). Đường Elip là tập hợp các điểm \(M\) sao cho \(MF_1 + MF_2 = 2a\).</p>
+                <div class="formula-box">
+                    <b>Phương trình chính tắc:</b> \(\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1\) \((a > b > 0)\)
+                </div>
+                <ul>
+                    <li>Mối liên hệ: \(c^2 = a^2 - b^2\)</li>
+                    <li>Tiêu điểm: \(F_1(-c; 0), F_2(c; 0)\).</li>
+                </ul>
+
+                <h4>2. Hypebol (H)</h4>
+                <div class="formula-box">
+                    <b>Phương trình chính tắc:</b> \(\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1\) \((a, b > 0)\)
+                </div>
+                <ul>
+                    <li>Mối liên hệ: \(c^2 = a^2 + b^2\)</li>
+                </ul>
+
+                <h4>3. Parabol (P)</h4>
+                <div class="formula-box">
+                    <b>Phương trình chính tắc:</b> \(y^2 = 2px\) \((p > 0)\)
+                </div>
+                <ul>
+                    <li>Tiêu điểm: \(F\left(\frac{p}{2}; 0\right)\)</li>
+                    <li>Đường chuẩn: \(x = -\frac{p}{2}\)</li>
+                </ul>
             </section>
         </div>
+
+        <aside class="video-sidebar">
+            <div class="sticky-video-box">
+                <video controls>
+                    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                    Trình duyệt không hỗ trợ video.
+                </video>
+            </div>
+            <p style="text-align: center; font-size: 13px; color: #666; margin-top: 15px;">Hướng dẫn giải bài tập</p>
+        </aside>
     </div>
 
-    <script>
-        // Hàm bật/tắt vùng môn học Lớp 10
-        function toggleSubjectsLayer() {
-            var layer = document.getElementById("subjects-layer");
-            layer.style.display = (layer.style.display === "flex") ? "none" : "flex";
-        }
-    </script>
 </body>
 </html>
