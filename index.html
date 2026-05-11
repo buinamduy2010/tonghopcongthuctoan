@@ -12,8 +12,7 @@
             --primary-color: #2c3e50;
             --accent-color: #3498db;
             --bg-color: #f4f7f6;
-            --nav-height: 80px;
-            --blue-menu: #2980b9;
+            --nav-height: 70px;
         }
 
         body {
@@ -24,59 +23,60 @@
             padding-top: var(--nav-height);
         }
 
-        /* --- NAVBAR NGANG CỐ ĐỊNH --- */
-        .top-navbar {
+        /* --- NAVBAR NGANG KẾT HỢP DROPDOWN DỌC --- */
+        .navbar {
             position: fixed;
             top: 0; left: 0; right: 0;
             height: var(--nav-height);
             background: var(--primary-color);
-            color: white;
             display: flex;
-            align-items: center;
             justify-content: space-between;
+            align-items: center;
             padding: 0 40px;
             z-index: 10000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
 
         .brand { font-weight: bold; color: var(--accent-color); font-size: 1.2rem; }
-        .nav-links { display: flex; gap: 12px; align-items: center; }
+        .nav-links { display: flex; height: 100%; }
+        .nav-item { position: relative; height: 100%; }
 
-        /* --- DROPDOWN MENU --- */
-        .dropdown { position: relative; display: inline-block; }
-        
-        .dropbtn {
-            background: var(--blue-menu);
+        .nav-link {
             color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
+            text-decoration: none;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            height: 100%;
             font-weight: bold;
+            font-size: 14px;
             transition: 0.3s;
         }
 
-        .dropdown-content {
+        .nav-link:hover { background: rgba(255,255,255,0.1); }
+
+        .dropdown-menu {
             display: none;
             position: absolute;
-            background-color: white;
-            min-width: 250px;
-            box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
-            z-index: 1;
+            top: var(--nav-height);
+            left: 0;
+            background: white;
+            min-width: 280px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
             border-radius: 0 0 8px 8px;
+            flex-direction: column;
         }
 
-        .dropdown-content a {
+        .dropdown-menu a {
             color: #333;
-            padding: 12px 16px;
+            padding: 12px 20px;
             text-decoration: none;
-            display: block;
             font-size: 14px;
             border-bottom: 1px solid #eee;
         }
 
-        .dropdown-content a:hover { background-color: #f1f1f1; color: var(--blue-menu); }
-        .dropdown:hover .dropdown-content { display: block; }
+        .dropdown-menu a:hover { background: #f1f1f1; color: #2980b9; padding-left: 25px; }
+        .nav-item:hover .dropdown-menu { display: flex; }
 
         /* --- NỘI DUNG --- */
         .container {
@@ -103,52 +103,42 @@
         h4 { color: #e67e22; margin-top: 25px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
 
         .formula-box { 
-            background: #f0f7ff; 
-            border: 1px solid #d1e9ff; 
-            padding: 20px; 
-            border-radius: 8px; 
-            margin: 15px 0; 
-            text-align: center;
-            font-weight: 500;
+            background: #f0f7ff; border: 1px solid #d1e9ff; 
+            padding: 20px; border-radius: 8px; margin: 15px 0; 
+            text-align: center; font-weight: 500;
         }
 
         .condition { color: #c0392b; font-style: italic; font-size: 0.95rem; }
 
         .video-sidebar { width: 320px; flex-shrink: 0; }
-        .sticky-video { position: sticky; top: 110px; background: #000; border-radius: 10px; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+        .sticky-video { position: sticky; top: 110px; background: #000; border-radius: 10px; overflow: hidden; }
         video { width: 100%; display: block; }
 
-        @media (max-width: 1100px) {
-            .video-sidebar { display: none; }
-        }
+        @media (max-width: 1100px) { .video-sidebar { display: none; } }
     </style>
 </head>
 <body>
 
-    <nav class="top-navbar">
+    <nav class="navbar">
         <div class="brand">duydzcogisai | TOÁN 10</div>
-        
         <div class="nav-links">
-            <div class="dropdown">
-                <button class="dropbtn">DANH SÁCH CHƯƠNG ▼</button>
-                <div class="dropdown-content">
-                    <a href="#chuong1">C1: Mệnh đề & Tập hợp</a>
-                    <a href="#chuong2">C2: BPT bậc nhất</a>
-                    <a href="#chuong3">C3: Hàm số bậc hai</a>
-                    <a href="#chuong4">C4: Hệ thức lượng</a>
-                    <a href="#chuong5">C5: Vectơ & Tọa độ</a>
-                    <a href="#chuong6">C6: PT Đường thẳng</a>
-                    <a href="#chuong7">C7: Vị trí, Góc, KC</a>
-                    <a href="#chuong8">C8: Đường tròn</a>
-                    <a href="#chuong9">C9: Ba đường Conic</a>
+            <div class="nav-item">
+                <a href="#" class="nav-link">DANH MỤC CHƯƠNG ▼</a>
+                <div class="dropdown-menu">
+                    <a href="#chuong1">Chương 1: Mệnh đề & Tập hợp</a>
+                    <a href="#chuong2">Chương 2: BPT & Hệ BPT bậc nhất</a>
+                    <a href="#chuong3">Chương 3: Hàm số bậc hai</a>
+                    <a href="#chuong4">Chương 4: Hệ thức lượng tam giác</a>
+                    <a href="#chuong5">Chương 5: Vectơ & Tọa độ</a>
+                    <a href="#chuong6">Chương 6: PT Đường thẳng</a>
+                    <a href="#chuong7">Chương 7: Vị trí, Góc, KC</a>
+                    <a href="#chuong8">Chương 8: PT Đường tròn</a>
+                    <a href="#chuong9">Chương 9: Ba đường Conic</a>
                 </div>
             </div>
-        </div>
-
-        <div class="nav-links">
-            <a href="#" style="background: #e67e22; color: white; padding: 5px 10px; border-radius: 4px; text-decoration: none;">Lớp 10</a>
-            <a href="#" style="color: #bdc3c7; text-decoration: none;">Lớp 11</a>
-            <a href="#" style="color: #bdc3c7; text-decoration: none;">Lớp 12</a>
+            <div class="nav-item">
+                <a href="#" class="nav-link" style="color: #e67e22;">Lớp 10</a>
+            </div>
         </div>
     </nav>
 
@@ -238,6 +228,7 @@
                     <li><b>Tổng quát:</b> \(Ax + By + C = 0\) (VTPT \(\vec{n}=(A;B)\)).</li>
                     <li><b>Đoạn chắn:</b> \(\frac{x}{a} + \frac{y}{b} = 1\) (Đi qua \(A(a;0), B(0;b)\)).</li>
                 </ul>
+                <p><b>Liên hệ:</b> Nếu \(\vec{u}=(a;b)\) thì \(\vec{n}=(-b;a)\).</p>
             </section>
 
             <section id="chuong7" class="chapter-section">
@@ -251,40 +242,55 @@
             <section id="chuong8" class="chapter-section">
                 <h3>Chương 8: Phương trình đường tròn</h3>
                 <p><b>Dạng chính tắc:</b> \((x-a)^2 + (y-b)^2 = R^2\)</p>
+                <p><b>Dạng tổng quát:</b> \(x^2 + y^2 - 2ax - 2by + c = 0\)</p>
                 <div class="formula-box">
-                    <b>Điều kiện:</b> \(a^2 + b^2 - c > 0\) | <b>Bán kính:</b> \(R = \sqrt{a^2 + b^2 - c}\)
+                    <b>Điều kiện:</b> \(a^2 + b^2 - c > 0\) <br>
+                    Khi đó: Tâm \(I(a;b)\), Bán kính \(R = \sqrt{a^2 + b^2 - c}\)
                 </div>
             </section>
 
             <section id="chuong9" class="chapter-section">
                 <h3 style="border-left-color: #e67e22;">Chương 9: Ba đường Conic</h3>
                 <h4>1. Elip (E)</h4>
-                <p><b>Định nghĩa:</b> $MF_1 + MF_2 = 2a$ (với $a > c > 0$).</p>
+                <p><b>Định nghĩa:</b> Cho hai điểm cố định $F_1, F_2$ với $F_1F_2 = 2c$. Elip là tập hợp các điểm $M$ sao cho $MF_1 + MF_2 = 2a$ (với $a > c > 0$).</p>
                 <div class="formula-box">
                     <b>Phương trình chính tắc:</b> $\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$ <span class="condition">($a > b > 0$)</span>
                 </div>
                 <ul>
-                    <li><b>Liên hệ:</b> $a^2 = b^2 + c^2$.</li>
+                    <li><b>Liên hệ ba tham số:</b> $a^2 = b^2 + c^2$.</li>
+                    <li><b>Tiêu điểm:</b> $F_1(-c; 0), F_2(c; 0)$. <b>Tiêu cự:</b> $F_1F_2 = 2c$.</li>
+                    <li><b>Các đỉnh:</b> $A_1(-a; 0), A_2(a; 0), B_1(0; -b), B_2(0; b)$.</li>
+                    <li><b>Độ dài trục:</b> Trục lớn $A_1A_2 = 2a$; Trục nhỏ $B_1B_2 = 2b$.</li>
                     <li><b>Tâm sai:</b> $e = \frac{c}{a}$ ($0 < e < 1$).</li>
+                    <li><b>Bán kính qua tiêu:</b> $MF_1 = a + ex_M, MF_2 = a - ex_M$.</li>
                 </ul>
 
                 <h4>2. Hypebol (H)</h4>
-                <p><b>Định nghĩa:</b> $|MF_1 - MF_2| = 2a$ (với $0 < a < c$).</p>
+                <p><b>Định nghĩa:</b> Cho hai điểm cố định $F_1, F_2$ với $F_1F_2 = 2c$. Hypebol là tập hợp các điểm $M$ sao cho $|MF_1 - MF_2| = 2a$ (với $0 < a < c$).</p>
                 <div class="formula-box">
                     <b>Phương trình chính tắc:</b> $\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1$ <span class="condition">($a, b > 0$)</span>
                 </div>
                 <ul>
-                    <li><b>Liên hệ:</b> $c^2 = a^2 + b^2$.</li>
-                    <li><b>Tiệm cận:</b> $y = \pm \frac{b}{a}x$.</li>
+                    <li><b>Liên hệ ba tham số:</b> $c^2 = a^2 + b^2$.</li>
+                    <li><b>Tiêu điểm:</b> $F_1(-c; 0), F_2(c; 0)$. <b>Tiêu cự:</b> $F_1F_2 = 2c$.</li>
+                    <li><b>Các đỉnh trên trục thực:</b> $A_1(-a; 0), A_2(a; 0)$.</li>
+                    <li><b>Độ dài trục:</b> Trục thực $2a$; Trục ảo $2b$.</li>
+                    <li><b>Tâm sai:</b> $e = \frac{c}{a}$ ($e > 1$).</li>
+                    <li><b>Tiệm cận:</b> Hai đường thẳng $y = \frac{b}{a}x$ và $y = -\frac{b}{a}x$.</li>
+                    <li><b>Bán kính qua tiêu:</b> $MF_1 = |a + ex_M|, MF_2 = |a - ex_M|$.</li>
                 </ul>
 
                 <h4>3. Parabol (P)</h4>
+                <p><b>Định nghĩa:</b> Cho một điểm $F$ và đường thẳng $\Delta$ không đi qua $F$. Parabol là tập hợp các điểm $M$ cách đều $F$ và $\Delta$. Khoảng cách từ $F$ đến $\Delta$ gọi là tham số tiêu $p$.</p>
                 <div class="formula-box">
                     <b>Phương trình chính tắc:</b> $y^2 = 2px$ <span class="condition">($p > 0$)</span>
                 </div>
                 <ul>
-                    <li><b>Tiêu điểm:</b> $F(p/2; 0)$. <b>Đường chuẩn:</b> $x = -p/2$.</li>
-                    <li><b>Bán kính qua tiêu:</b> $MF = x_M + p/2$.</li>
+                    <li><b>Tiêu điểm:</b> $F\left(\frac{p}{2}; 0\right)$.</li>
+                    <li><b>Phương trình đường chuẩn:</b> $\Delta: x = -\frac{p}{2}$.</li>
+                    <li><b>Đỉnh:</b> Gốc tọa độ $O(0;0)$.</li>
+                    <li><b>Bán kính qua tiêu:</b> $MF = d(M, \Delta) = x_M + \frac{p}{2}$.</li>
+                    <li><b>Tâm sai:</b> $e = 1$.</li>
                 </ul>
             </section>
         </div>
@@ -298,5 +304,6 @@
             <p style="text-align: center; margin-top: 15px; color: #7f8c8d; font-size: 14px;">Hướng dẫn giải nhanh</p>
         </aside>
     </div>
+
 </body>
 </html>
