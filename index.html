@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sổ Tay Công Thức Toán 10 - duydzcogisai</title>
+    <title>Sổ Tay Toán 10 Chuẩn SGK - duydzcogisai</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     
@@ -11,21 +11,19 @@
         :root {
             --primary-color: #2c3e50;
             --accent-color: #3498db;
-            --bg-color: #f9f9f9;
+            --bg-color: #f4f7f6;
             --nav-height: 80px;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            line-height: 1.7;
             margin: 0;
             background-color: var(--bg-color);
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 150 150'%3E%3Ctext x='10' y='30' fill='%233498db' fill-opacity='0.05' font-family='Arial' font-size='25'%3E∑%3C/text%3E%3Ctext x='100' y='50' fill='%233498db' fill-opacity='0.05' font-family='Arial' font-size='20'%3Eπ%3C/text%3E%3Ctext x='40' y='100' fill='%233498db' fill-opacity='0.05' font-family='Arial' font-size='30'%3E∫%3C/text%3E%3Ctext x='120' y='120' fill='%233498db' fill-opacity='0.05' font-family='Arial' font-size='22'%3E∞%3C/text%3E%3Ctext x='80' y='20' fill='%233498db' fill-opacity='0.05' font-family='Arial' font-size='18'%3E√%3C/text%3E%3C/svg%3E");
-            background-attachment: fixed;
             padding-top: var(--nav-height);
         }
 
-        /* MENU NGANG */
+        /* NAVBAR FIXED */
         .top-navbar {
             position: fixed;
             top: 0; left: 0; right: 0;
@@ -40,57 +38,54 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
 
-        .brand { font-weight: bold; color: var(--accent-color); font-size: 1.1rem; }
-        .nav-links { display: flex; gap: 15px; align-items: center; }
-        .nav-links span { font-size: 11px; color: #8e9eab; text-transform: uppercase; }
-        .nav-links a { color: #bdc3c7; text-decoration: none; font-size: 13px; transition: 0.3s; padding: 5px 8px; border-radius: 4px; }
+        .brand { font-weight: bold; color: var(--accent-color); font-size: 1.2rem; }
+        .nav-links { display: flex; gap: 12px; align-items: center; }
+        .nav-links a { color: #bdc3c7; text-decoration: none; font-size: 13px; padding: 5px 10px; border-radius: 4px; transition: 0.3s; }
         .nav-links a:hover { color: white; background: rgba(255,255,255,0.1); }
         .nav-links a.active { background: #e67e22; color: white; }
 
-        /* BỐ CỤC */
+        /* MAIN LAYOUT */
         .container {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
             display: flex;
             padding: 40px 20px;
-            gap: 40px;
+            gap: 30px;
         }
 
         .main-content { flex: 1; min-width: 0; }
 
-        .video-sidebar { width: 320px; flex-shrink: 0; }
-        .sticky-video-box { position: sticky; top: 100px; width: 100%; background: #000; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
-        video { width: 100%; display: block; }
-
         .chapter-section {
             background: white;
-            padding: 30px;
+            padding: 35px;
             margin-bottom: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             scroll-margin-top: 100px;
         }
 
-        h1 { color: var(--primary-color); text-align: center; margin-top: 0; }
-        h3 { color: var(--accent-color); border-left: 4px solid var(--accent-color); padding-left: 10px; margin-top: 0; }
-        h4 { color: #e67e22; margin-top: 20px; margin-bottom: 10px; font-weight: 600; }
-        
+        h1 { color: var(--primary-color); text-align: center; margin-bottom: 40px; }
+        h3 { color: var(--accent-color); border-left: 5px solid var(--accent-color); padding-left: 15px; margin-top: 0; }
+        h4 { color: #e67e22; margin-top: 25px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+
         .formula-box { 
             background: #f0f7ff; 
             border: 1px solid #d1e9ff; 
-            padding: 15px; 
-            border-radius: 5px; 
+            padding: 20px; 
+            border-radius: 8px; 
             margin: 15px 0; 
-            text-align: center; 
-            font-size: 1.1rem;
-            color: #2c3e50;
+            text-align: center;
+            font-weight: 500;
         }
 
-        ul { padding-left: 20px; }
-        li { margin-bottom: 8px; }
-        b { color: #2c3e50; }
+        .condition { color: #c0392b; font-style: italic; font-size: 0.95rem; }
 
-        @media (max-width: 1000px) {
+        /* STICKY VIDEO */
+        .video-sidebar { width: 320px; flex-shrink: 0; }
+        .sticky-video { position: sticky; top: 110px; background: #000; border-radius: 10px; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+        video { width: 100%; display: block; }
+
+        @media (max-width: 1100px) {
             .video-sidebar { display: none; }
             .top-navbar { padding: 0 15px; flex-direction: column; height: auto; padding-bottom: 10px; }
         }
@@ -101,10 +96,9 @@
     <nav class="top-navbar">
         <div class="brand">duydzcogisai | TOÁN 10</div>
         <div class="nav-links">
-            <span>Chương:</span>
-            <a href="#chuong1">1</a> <a href="#chuong2">2</a> <a href="#chuong3">3</a>
-            <a href="#chuong4">4</a> <a href="#chuong5">5</a> <a href="#chuong6">6</a>
-            <a href="#chuong7">7</a> <a href="#chuong8">8</a> <a href="#chuong9">9</a>
+            <a href="#chuong1">C1</a> <a href="#chuong2">C2</a> <a href="#chuong3">C3</a>
+            <a href="#chuong4">C4</a> <a href="#chuong5">C5</a> <a href="#chuong6">C6</a>
+            <a href="#chuong7">C7</a> <a href="#chuong8">C8</a> <a href="#chuong9">C9</a>
         </div>
         <div class="nav-links">
             <a href="#" class="active">Lớp 10</a> <a href="#">Lớp 11</a> <a href="#">Lớp 12</a>
@@ -113,176 +107,130 @@
 
     <div class="container">
         <div class="main-content">
-            <h1>Hệ Thống Kiến Thức Toán Học 10</h1>
+            <h1>TỔNG HỢP KIẾN THỨC TOÁN 10 TOÀN TẬP</h1>
 
             <section id="chuong1" class="chapter-section">
-                <h3>Chương 1: Mệnh đề & Tập hợp</h3>
+                <h3>Chương 1: Mệnh đề và Tập hợp</h3>
                 <h4>1. Mệnh đề</h4>
                 <ul>
-                    <li><b>Mệnh đề phủ định:</b> Phủ định của \(P\) là \(\overline{P}\). Nếu \(P\) đúng thì \(\overline{P}\) sai.</li>
                     <li><b>Mệnh đề kéo theo:</b> \(P \Rightarrow Q\) chỉ sai khi \(P\) đúng và \(Q\) sai.</li>
-                    <li><b>Mệnh đề tương đương:</b> \(P \Leftrightarrow Q\) đúng khi cả \(P\) và \(Q\) cùng đúng hoặc cùng sai.</li>
+                    <li><b>Mệnh đề đảo:</b> Mệnh đề đảo của \(P \Rightarrow Q\) là \(Q \Rightarrow P\).</li>
+                    <li><b>Ký hiệu:</b> \(\forall x \in A, P(x)\) (phủ định là \(\exists x \in A, \overline{P(x)}\)).</li>
                 </ul>
-                <h4>2. Tập hợp</h4>
+                <h4>2. Các phép toán tập hợp</h4>
                 <div class="formula-box">
-                    \( A \subset B \Leftrightarrow \forall x (x \in A \Rightarrow x \in B) \)
+                    \(A \cap B = \{x \mid x \in A \text{ và } x \in B\}\) <br>
+                    \(A \cup B = \{x \mid x \in A \text{ hoặc } x \in B\}\) <br>
+                    \(A \setminus B = \{x \mid x \in A \text{ và } x \notin B\}\)
                 </div>
-                <ul>
-                    <li><b>Giao:</b> \( A \cap B = \{x \mid x \in A \text{ và } x \in B\} \)</li>
-                    <li><b>Hợp:</b> \( A \cup B = \{x \mid x \in A \text{ hoặc } x \in B\} \)</li>
-                    <li><b>Hiệu:</b> \( A \setminus B = \{x \mid x \in A \text{ và } x \notin B\} \)</li>
-                    <li><b>Phần bù:</b> Nếu \(A \subset E\) thì \(C_E A = E \setminus A\).</li>
-                </ul>
+                <p><b>Phần bù:</b> \(C_E A\) chỉ xác định khi \(A \subset E\). Khi đó \(C_E A = E \setminus A\).</p>
             </section>
 
             <section id="chuong2" class="chapter-section">
-                <h3>Chương 2: Bất phương trình & Hệ BPT bậc nhất hai ẩn</h3>
+                <h3>Chương 2: Bất phương trình và Hệ BPT bậc nhất hai ẩn</h3>
                 <h4>1. Bất phương trình bậc nhất hai ẩn</h4>
-                <p>Dạng: \(ax + by < c\) (hoặc \( >, \le, \ge \)).</p>
-                <ul>
-                    <li><b>Biểu diễn miền nghiệm:</b> Vẽ đường thẳng \(d: ax + by = c\). Thay điểm \(O(0;0)\) (nếu không thuộc \(d\)) để xác định miền nghiệm.</li>
-                </ul>
-                <h4>2. Hệ bất phương trình bậc nhất hai ẩn</h4>
-                <p>Miền nghiệm của hệ là <b>phần giao</b> miền nghiệm của tất cả các BPT trong hệ. Thường là một miền đa giác.</p>
-                <div class="formula-box">
-                    <b>Bài toán tối ưu:</b> Giá trị lớn nhất/nhỏ nhất của \(F = ax + by\) thường đạt được tại các đỉnh của miền đa giác nghiệm.
-                </div>
+                <p>Dạng tổng quát: \(ax + by < c\) (hoặc \(>, \le, \ge\)) với \(a^2 + b^2 \neq 0\).</p>
+                <p><b>Các bước biểu diễn miền nghiệm:</b></p>
+                <ol>
+                    <li>Vẽ đường thẳng \(d: ax + by = c\).</li>
+                    <li>Lấy điểm thử \(M_0(x_0; y_0) \notin d\) (thường lấy \(O(0;0)\)).</li>
+                    <li>Nếu tọa độ \(M_0\) thỏa mãn BPT thì nửa mặt phẳng chứa \(M_0\) là miền nghiệm.</li>
+                </ol>
+                <h4>2. Bài toán tối ưu</h4>
+                <p>Giá trị lớn nhất hoặc nhỏ nhất của biểu thức \(F(x; y) = ax + by\) trên một miền đa giác luôn đạt được tại các <b>đỉnh</b> của đa giác đó.</p>
             </section>
 
             <section id="chuong3" class="chapter-section">
                 <h3>Chương 3: Hàm số bậc hai</h3>
-                <p>Dạng tổng quát: \( y = ax^2 + bx + c \quad (a \neq 0) \)</p>
-                <h4>1. Đồ thị (Parabol)</h4>
-                <ul>
-                    <li><b>Đỉnh \(I\):</b> \( I\left( -\frac{b}{2a} ; -\frac{\Delta}{4a} \right) \)</li>
-                    <li><b>Trục đối xứng:</b> Đường thẳng \( x = -\frac{b}{2a} \)</li>
-                    <li><b>Bề lõm:</b> Hướng lên trên nếu \(a > 0\), hướng xuống dưới nếu \(a < 0\).</li>
-                </ul>
-                <h4>2. Bảng biến thiên</h4>
+                <p>Xét hàm số: \(y = ax^2 + bx + c\) <span class="condition">(a \neq 0)</span>.</p>
                 <div class="formula-box">
-                    \(a > 0\): Hàm số đồng biến trên \((-\frac{b}{2a}; +\infty)\), nghịch biến trên \((-\infty; -\frac{b}{2a})\).
+                    <b>Tọa độ đỉnh:</b> \(I\left(-\frac{b}{2a}; -\frac{\Delta}{4a}\right)\) <br>
+                    <b>Trục đối xứng:</b> \(x = -\frac{b}{2a}\)
                 </div>
+                <h4>Sự biến thiên:</h4>
+                <ul>
+                    <li>Nếu \(a > 0\): Hàm số nghịch biến trên \((-\infty; -b/2a)\), đồng biến trên \((-b/2a; +\infty)\).</li>
+                    <li>Nếu \(a < 0\): Hàm số đồng biến trên \((-\infty; -b/2a)\), nghịch biến trên \((-b/2a; +\infty)\).</li>
+                </ul>
             </section>
 
             <section id="chuong4" class="chapter-section">
                 <h3>Chương 4: Hệ thức lượng trong tam giác</h3>
-                <h4>1. Định lý Cosin và Định lý Sin</h4>
+                <h4>1. Các định lý cơ bản</h4>
                 <div class="formula-box">
-                    \( a^2 = b^2 + c^2 - 2bc \cos A \) <br>
-                    \( \frac{a}{\sin A} = \frac{b}{\sin B} = \frac{c}{\sin C} = 2R \)
+                    <b>Định lý Cosin:</b> \(a^2 = b^2 + c^2 - 2bc \cos A\) <br>
+                    <b>Định lý Sin:</b> \(\frac{a}{\sin A} = \frac{b}{\sin B} = \frac{c}{\sin C} = 2R\)
                 </div>
-                <h4>2. Công thức tính diện tích tam giác \(S\)</h4>
+                <h4>2. Công thức diện tích tam giác</h4>
                 <ul>
-                    <li>\( S = \frac{1}{2}ah_a = \frac{1}{2}bc \sin A \)</li>
-                    <li>\( S = \frac{abc}{4R} = pr \) (với \(p\) là nửa chu vi).</li>
-                    <li><b>Công thức Heron:</b> \( S = \sqrt{p(p-a)(p-b)(p-c)} \)</li>
+                    <li>\(S = \frac{1}{2}ah_a = \frac{1}{2}bc \sin A = \frac{abc}{4R} = p.r\)</li>
+                    <li><b>Công thức Heron:</b> \(S = \sqrt{p(p-a)(p-b)(p-c)}\) với \(p = \frac{a+b+c}{2}\).</li>
                 </ul>
             </section>
 
             <section id="chuong5" class="chapter-section">
                 <h3>Chương 5: Vectơ và Biểu thức tọa độ</h3>
-                <h4>1. Các quy tắc Vectơ</h4>
+                <h4>1. Tọa độ điểm và Vectơ</h4>
                 <ul>
-                    <li><b>Quy tắc 3 điểm:</b> \(\vec{AB} + \vec{BC} = \vec{AC}\)</li>
-                    <li><b>Quy tắc hình bình hành:</b> \(\vec{AB} + \vec{AD} = \vec{AC}\)</li>
-                    <li><b>Trung điểm \(I\):</b> \(\vec{IA} + \vec{IB} = \vec{0}\). Trọng tâm \(G\): \(\vec{GA} + \vec{GB} + \vec{GC} = \vec{0}\).</li>
+                    <li>\(\vec{AB} = (x_B - x_A; y_B - y_A)\)</li>
+                    <li>Trung điểm \(M\): \(x_M = \frac{x_A+x_B}{2}, y_M = \frac{y_A+y_B}{2}\)</li>
+                    <li>Trọng tâm \(G\): \(x_G = \frac{x_A+x_B+x_C}{3}, y_G = \frac{y_A+y_B+y_C}{3}\)</li>
                 </ul>
-                <h4>2. Biểu thức tọa độ</h4>
+                <h4>2. Tích vô hướng</h4>
                 <div class="formula-box">
-                    \(\vec{u} \cdot \vec{v} = |\vec{u}| \cdot |\vec{v}| \cdot \cos(\vec{u}, \vec{v}) = x.x' + y.y'\)
+                    \(\vec{u} \cdot \vec{v} = |\vec{u}| \cdot |\vec{v}| \cdot \cos(\vec{u}, \vec{v}) = x_1x_2 + y_1y_2\) <br>
+                    \(\vec{u} \perp \vec{v} \Leftrightarrow x_1x_2 + y_1y_2 = 0\)
                 </div>
-                <ul>
-                    <li><b>Độ dài:</b> \(|\vec{u}| = \sqrt{x^2 + y^2}\)</li>
-                    <li><b>Khoảng cách 2 điểm:</b> \(AB = \sqrt{(x_B-x_A)^2 + (y_B-y_A)^2}\)</li>
-                </ul>
             </section>
 
             <section id="chuong6" class="chapter-section">
                 <h3>Chương 6: Phương trình đường thẳng</h3>
-                <h4>1. Phương trình tham số</h4>
-                <p>Đi qua \(M_0(x_0; y_0)\), có VTCP \(\vec{u} = (a; b)\):</p>
-                <div class="formula-box">
-                    \(\begin{cases} x = x_0 + at \\ y = y_0 + bt \end{cases}\)
-                </div>
-                <h4>2. Phương trình tổng quát</h4>
-                <p>Đi qua \(M_0(x_0; y_0)\), có VTPT \(\vec{n} = (A; B)\):</p>
-                <div class="formula-box">
-                    \(A(x - x_0) + B(y - y_0) = 0 \Leftrightarrow Ax + By + C = 0\)
-                </div>
-                <p><i>Lưu ý:</i> Nếu \(\vec{u} = (a; b)\) thì \(\vec{n} = (-b; a)\) hoặc \((b; -a)\).</p>
+                <h4>1. Các dạng phương trình</h4>
+                <ul>
+                    <li><b>Tham số:</b> \(\{x=x_0+at, y=y_0+bt\}\) (VTCP \(\vec{u}=(a;b)\)).</li>
+                    <li><b>Tổng quát:</b> \(Ax + By + C = 0\) (VTPT \(\vec{n}=(A;B)\)).</li>
+                    <li><b>Đoạn chắn:</b> \(\frac{x}{a} + \frac{y}{b} = 1\) (Đi qua \(A(a;0), B(0;b)\)).</li>
+                </ul>
+                <p><b>Liên hệ:</b> Nếu \(\vec{u}=(a;b)\) thì \(\vec{n}=(-b;a)\).</p>
             </section>
 
             <section id="chuong7" class="chapter-section">
                 <h3>Chương 7: Vị trí tương đối, Góc và Khoảng cách</h3>
-                <h4>1. Vị trí tương đối của hai đường thẳng</h4>
-                <p>Xét \(\Delta_1: A_1x + B_1y + C_1 = 0\) và \(\Delta_2: A_2x + B_2y + C_2 = 0\).</p>
-                <ul>
-                    <li>Cắt nhau: \(A_1B_2 - A_2B_1 \neq 0\).</li>
-                    <li>Song song: \(\frac{A_1}{A_2} = \frac{B_1}{B_2} \neq \frac{C_1}{C_2}\).</li>
-                    <li>Trùng nhau: \(\frac{A_1}{A_2} = \frac{B_1}{B_2} = \frac{C_1}{C_2}\).</li>
-                </ul>
-                <h4>2. Khoảng cách và Góc</h4>
                 <div class="formula-box">
-                    \(d(M, \Delta) = \frac{|Ax_M + By_M + C|}{\sqrt{A^2 + B^2}}\)
+                    <b>Khoảng cách:</b> \(d(M_0, \Delta) = \frac{|Ax_0 + By_0 + C|}{\sqrt{A^2 + B^2}}\)
                 </div>
-                <p><b>Góc \(\varphi\):</b> \(\cos \varphi = \frac{|\vec{n_1} \cdot \vec{n_2}|}{|\vec{n_1}| \cdot |\vec{n_2}|}\)</p>
+                <p><b>Góc giữa hai đường thẳng:</b> \(\cos \varphi = \frac{|A_1A_2 + B_1B_2|}{\sqrt{A_1^2+B_1^2} \cdot \sqrt{A_2^2+B_2^2}}\)</p>
             </section>
 
             <section id="chuong8" class="chapter-section">
                 <h3>Chương 8: Phương trình đường tròn</h3>
-                <h4>1. Định nghĩa và Phương trình</h4>
-                <ul>
-                    <li><b>Dạng 1 (Chính tắc):</b> \((x - a)^2 + (y - b)^2 = R^2\). Tâm \(I(a; b)\), bán kính \(R\).</li>
-                    <li><b>Dạng 2 (Tổng quát):</b> \(x^2 + y^2 - 2ax - 2by + c = 0\).</li>
-                </ul>
+                <p><b>Dạng chính tắc:</b> \((x-a)^2 + (y-b)^2 = R^2\)</p>
+                <p><b>Dạng tổng quát:</b> \(x^2 + y^2 - 2ax - 2by + c = 0\)</p>
                 <div class="formula-box">
-                    Điều kiện là đường tròn: \(a^2 + b^2 - c > 0\). <br> Khi đó: \(R = \sqrt{a^2 + b^2 - c}\).
+                    <b>Điều kiện:</b> \(a^2 + b^2 - c > 0\) <br>
+                    Khi đó: Tâm \(I(a;b)\), Bán kính \(R = \sqrt{a^2 + b^2 - c}\)
                 </div>
-                <h4>2. Phương trình tiếp tuyến</h4>
-                <p>Tiếp tuyến tại điểm \(M(x_0; y_0) \in (C)\) có phương trình:</p>
-                <p>\((x_0 - a)(x - x_0) + (y_0 - b)(y - y_0) = 0\).</p>
             </section>
 
             <section id="chuong9" class="chapter-section">
-                <h3 style="color: #e67e22; border-left-color: #e67e22;">Chương 9: Ba đường Conic</h3>
+                <h3>Chương 9: Ba đường Conic</h3>
                 <h4>1. Elip (E)</h4>
-                <p>Định nghĩa: \(MF_1 + MF_2 = 2a\).</p>
-                <div class="formula-box">
-                    \(\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1 \quad (a > b > 0, c^2 = a^2 - b^2)\)
-                </div>
-                <ul>
-                    <li>Tiêu điểm: \(F_1(-c;0), F_2(c;0)\). Tiêu cự: \(2c\).</li>
-                    <li>Trục lớn: \(2a\), Trục nhỏ: \(2b\).</li>
-                </ul>
-
+                <p>\(\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1\) <span class="condition">(a > b > 0)</span>. Hệ thức: \(a^2 = b^2 + c^2\).</p>
                 <h4>2. Hypebol (H)</h4>
-                <p>Định nghĩa: \(|MF_1 - MF_2| = 2a\).</p>
-                <div class="formula-box">
-                    \(\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1 \quad (c^2 = a^2 + b^2)\)
-                </div>
-                <ul>
-                    <li>Tiêu điểm: \(F_1(-c;0), F_2(c;0)\). Trục thực: \(2a\), Trục ảo: \(2b\).</li>
-                </ul>
-
+                <p>\(\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1\) <span class="condition">(a, b > 0)</span>. Hệ thức: \(c^2 = a^2 + b^2\).</p>
                 <h4>3. Parabol (P)</h4>
-                <div class="formula-box">
-                    \(y^2 = 2px \quad (p > 0)\)
-                </div>
-                <ul>
-                    <li>Tiêu điểm: \(F(p/2; 0)\). Đường chuẩn: \(x = -p/2\).</li>
-                </ul>
+                <p>\(y^2 = 2px\) <span class="condition">(p > 0)</span>. Tiêu điểm \(F(p/2; 0)\), Đường chuẩn \(x = -p/2\).</p>
             </section>
         </div>
 
         <aside class="video-sidebar">
-            <div class="sticky-video-box">
+            <div class="sticky-video">
                 <video controls>
                     <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                    Trình duyệt không hỗ trợ video.
                 </video>
             </div>
-            <p style="text-align: center; font-size: 13px; color: #666; margin-top: 15px; font-weight: bold;">
-                ÔN TẬP TRỰC TUYẾN
-            </p>
+            <p style="text-align: center; margin-top: 15px; color: #7f8c8d; font-size: 14px;">Hướng dẫn giải nhanh</p>
         </aside>
     </div>
 
