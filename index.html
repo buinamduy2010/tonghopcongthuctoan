@@ -6,14 +6,13 @@
     <title>Sổ Tay Công Thức Toán 10 - duydzcogisai</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
         :root {
             --primary-color: #2c3e50;
             --accent-color: #3498db;
             --bg-color: #f9f9f9;
-            --nav-height: 70px;
+            --nav-height: 100px;
         }
 
         body {
@@ -21,262 +20,50 @@
             line-height: 1.6;
             margin: 0;
             background-color: var(--bg-color);
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 150 150'%3E%3Ctext x='10' y='30' fill='%233498db' fill-opacity='0.05' font-family='Arial' font-size='25'%3E∑%3C/text%3E%3Ctext x='100' y='50' fill='%233498db' fill-opacity='0.05' font-family='Arial' font-size='20'%3Eπ%3C/text%3E%3Ctext x='40' y='100' fill='%233498db' fill-opacity='0.05' font-family='Arial' font-size='30'%3E∫%3C/text%3E%3Ctext x='120' y='120' fill='%233498db' fill-opacity='0.05' font-family='Arial' font-size='22'%3E∞%3C/text%3E%3Ctext x='80' y='20' fill='%233498db' fill-opacity='0.05' font-family='Arial' font-size='18'%3E√%3C/text%3E%3C/svg%3E");
+            padding-top: var(--nav-height);
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 150 150'%3E%3Ctext x='10' y='30' fill='%233498db' fill-opacity='0.05' font-size='25'%3E∑%3C/text%3E%3Ctext x='100' y='50' fill='%233498db' fill-opacity='0.05' font-size='20'%3Eπ%3C/text%3E%3C/svg%3E");
             background-attachment: fixed;
-            padding-top: var(--nav-height); /* Tránh bị che bởi thanh nav */
         }
 
-        /* --- THANH ĐIỀU HƯỚNG NGANG PHÍA TRÊN --- */
-        .top-nav {
+        /* --- THANH NGANG GỘP --- */
+        .top-nav-fixed {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: var(--nav-height);
+            top: 0; left: 0; right: 0;
             background: white;
-            display: flex;
-            align-items: center;
-            padding: 0 20px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            z-index: 2000;
-            overflow-x: auto;
-            white-space: nowrap;
-        }
-
-        .nav-group {
-            display: flex;
-            align-items: center;
-            margin-right: 30px;
-            padding-right: 20px;
-            border-right: 1px solid #eee;
-        }
-
-        .nav-group:last-child { border-right: none; }
-
-        .nav-label { font-weight: bold; margin-right: 10px; color: var(--primary-color); }
-
-        .nav-item {
-            padding: 8px 12px;
-            margin: 0 4px;
-            text-decoration: none;
-            color: #555;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .nav-item:hover { background: #f0f7ff; color: var(--accent-color); }
-        .nav-item.active { background: var(--accent-color); color: white; }
-
-        /* Môn học lớp 10 ẩn đi ban đầu */
-        #subject-list-10 {
-            display: none;
-            background: #f8f9fa;
-            border-radius: 8px;
-            padding: 5px;
-            margin-left: 10px;
-        }
-
-        /* --- THANH SIDEBAR TRÁI --- */
-        .sidebar {
-            width: 230px;
-            background: var(--primary-color);
-            color: white;
-            height: 100vh;
-            position: fixed;
-            left: 0;
-            top: var(--nav-height);
-            padding: 20px;
-            overflow-y: auto;
-        }
-
-        /* --- MỤC LỤC BÊN PHẢI (KHÔNG THỂ BẤM) --- */
-        .sidebar-right {
-            width: 260px;
-            background: white;
-            border-left: 1px solid #ddd;
-            padding: 20px;
-            height: 100vh;
-            position: fixed;
-            right: 0;
-            top: var(--nav-height);
-            pointer-events: none; /* KHÔNG THỂ BẤM */
-            opacity: 0.9;
-        }
-
-        .sidebar-right h3 { font-size: 1.1rem; border-bottom: 2px solid #eee; padding-bottom: 10px; }
-        .toc-item { padding: 10px 0; border-bottom: 1px solid #f9f9f9; color: #777; font-size: 0.9rem; }
-
-        /* --- NỘI DUNG CHÍNH --- */
-        .main-container {
-            margin-left: 270px;
-            margin-right: 300px;
-            padding: 20px;
+            z-index: 9999;
             display: flex;
             flex-direction: column;
+        }
+
+        .nav-main {
+            display: flex;
             align-items: center;
+            padding: 10px 20px;
+            background: var(--primary-color);
+            color: white;
+            gap: 20px;
         }
 
-        .main-content { max-width: 900px; width: 100%; }
+        .nav-group { display: flex; align-items: center; gap: 10px; border-right: 1px solid rgba(255,255,255,0.2); padding-right: 15px; }
+        .nav-group:last-child { border-right: none; }
 
-        /* --- VIDEO THUYẾT TRÌNH & HIỆU ỨNG THU NHỎ --- */
-        .video-wrapper {
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            margin-bottom: 30px;
-            background: #000;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            transition: all 0.5s ease-in-out;
+        .nav-item {
+            color: #bdc3c7;
+            text-decoration: none;
+            font-size: 14px;
+            cursor: pointer;
+            padding: 5px 8px;
+            transition: 0.3s;
         }
+        .nav-item:hover { color: white; background: rgba(255,255,255,0.1); border-radius: 4px; }
 
-        /* Khi video được thu nhỏ */
-        .video-wrapper.mini {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 320px;
-            z-index: 3000;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+        /* Mục môn học khi bấm Lớp 10 */
+        #subject-bar {
+            display: none;
+            background: #ecf0f1;
+            padding: 8px 20px;
+            gap: 20px;
+            border-bottom: 1px solid #ddd;
         }
-
-        video { width: 100%; height: 100%; }
-
-        .chapter-section {
-            background: white;
-            padding: 30px;
-            margin-bottom: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .formula-box {
-            background: #f0f7ff;
-            border: 1px solid #d1e9ff;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 15px 0;
-            text-align: center;
-        }
-
-        h1 { color: var(--primary-color); }
-        h3 { color: var(--accent-color); border-left: 4px solid var(--accent-color); padding-left: 10px; }
-    </style>
-</head>
-<body>
-
-    <nav class="top-nav">
-        <div class="nav-group">
-            <span class="nav-label"><i class="fa-solid fa-book"></i> Chương:</span>
-            <a href="#chuong1" class="nav-item">Ch 1</a>
-            <a href="#chuong2" class="nav-item">Ch 2</a>
-            <a href="#chuong3" class="nav-item">Ch 3</a>
-            <a href="#chuong4" class="nav-item">Ch 4</a>
-            <a href="#chuong5" class="nav-item">Ch 5</a>
-            <a href="#chuong6" class="nav-item">Ch 6</a>
-            <a href="#chuong7" class="nav-item">Ch 7</a>
-            <a href="#chuong8" class="nav-item">Ch 8</a>
-            <a href="#chuong9" class="nav-item">Ch 9</a>
-        </div>
-
-        <div class="nav-group">
-            <span class="nav-label"><i class="fa-solid fa-graduation-cap"></i> Lớp:</span>
-            <span class="nav-item" onclick="toggleSubjects(10)">Lớp 10</span>
-            <span class="nav-item">Lớp 11</span>
-            <span class="nav-item">Lớp 12</span>
-            
-            <div id="subject-list-10">
-                <a href="#" class="nav-item active">Toán</a>
-                <a href="#" class="nav-item">Lí</a>
-                <a href="#" class="nav-item">Hóa</a>
-                <a href="#" class="nav-item">Sinh</a>
-                <a href="#" class="nav-item">Văn</a>
-                <a href="#" class="nav-item">Anh</a>
-            </div>
-        </div>
-    </nav>
-
-    <div class="sidebar">
-        <div style="margin-bottom: 15px;">
-            <span style="color: #3498db; font-weight: bold; font-size: 1.1rem; letter-spacing: 1px;">duydzcogisai</span>
-        </div>
-        <h2 style="font-size: 1.2rem;">Học Tập 4.0</h2>
-        <p style="font-size: 0.8rem; color: #bdc3c7;">Hệ thống công thức toán học thông minh.</p>
-    </div>
-
-    <div class="sidebar-right">
-        <h3><i class="fa-solid fa-list-ul"></i> Mục lục chương</h3>
-        <div class="toc-item">Chương 1: Mệnh đề - Tập hợp</div>
-        <div class="toc-item">Chương 2: Bất phương trình</div>
-        <div class="toc-item">Chương 3: Hàm số bậc hai</div>
-        <div class="toc-item">Chương 4: Hệ thức lượng</div>
-        <div class="toc-item">Chương 5: Vectơ & Tọa độ</div>
-        <div class="toc-item">Chương 6: PT Đường thẳng</div>
-        <div class="toc-item">Chương 7: Vị trí & Khoảng cách</div>
-        <div class="toc-item">Chương 8: PT Đường tròn</div>
-        <div class="toc-item">Chương 9: Ba đường Conic</div>
-    </div>
-
-    <div class="main-container">
-        <div class="main-content">
-            
-            <div class="video-wrapper" id="presentationVideo">
-                <video controls id="myVideo">
-                    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-                    Trình duyệt của bạn không hỗ trợ video.
-                </video>
-            </div>
-
-            <h1>Tổng Hợp Công Thức Toán Học Lớp 10</h1>
-
-            <section id="chuong1" class="chapter-section">
-                <h3>Chương 1: Mệnh đề & Tập hợp</h3>
-                <p>Nội dung công thức chương 1...</p>
-            </section>
-
-            <section id="chuong2" class="chapter-section">
-                <h3>Chương 2: Bất phương trình bậc nhất hai ẩn</h3>
-                <div class="formula-box">\( ax + by < c \)</div>
-            </section>
-
-            <section id="chuong9" class="chapter-section">
-                <h3>Chương 9: Ba đường Conic</h3>
-                <p>Nội dung chương 9...</p>
-            </section>
-
-        </div>
-    </div>
-
-    <script>
-        // Hàm bật/tắt danh sách môn học lớp 10
-        function toggleSubjects(grade) {
-            const list = document.getElementById('subject-list-10');
-            if (list.style.display === 'flex') {
-                list.style.display = 'none';
-            } else {
-                list.style.display = 'flex';
-                list.style.alignItems = 'center';
-            }
-        }
-
-        // Xử lý hiệu ứng video thu nhỏ khi cuộn trang
-        const videoWrapper = document.getElementById('presentationVideo');
-        const videoElement = document.getElementById('myVideo');
-        
-        // Lấy vị trí ban đầu của video
-        const videoTop = videoWrapper.offsetTop;
-        const videoHeight = videoWrapper.offsetHeight;
-
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > (videoTop + videoHeight)) {
-                videoWrapper.classList.add('mini');
-            } else {
-                videoWrapper.classList.remove('mini');
-            }
-        });
-    </script>
-
-</body>
-</html>
+        #subject-bar a { text-decoration: none; color: var
