@@ -13,7 +13,7 @@
             --primary-color: #2c3e50;
             --accent-color: #3498db;
             --bg-color: #f9f9f9;
-            --nav-height: 70px;
+            --nav-height: 80px;
         }
 
         body {
@@ -23,48 +23,25 @@
             background-color: var(--bg-color);
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 150 150'%3E%3Ctext x='10' y='30' fill='%233498db' fill-opacity='0.05' font-family='Arial' font-size='25'%3E∑%3C/text%3E%3Ctext x='100' y='50' fill='%233498db' fill-opacity='0.05' font-family='Arial' font-size='20'%3Eπ%3C/text%3E%3Ctext x='40' y='100' fill='%233498db' fill-opacity='0.05' font-family='Arial' font-size='30'%3E∫%3C/text%3E%3Ctext x='120' y='120' fill='%233498db' fill-opacity='0.05' font-family='Arial' font-size='22'%3E∞%3C/text%3E%3Ctext x='80' y='20' fill='%233498db' fill-opacity='0.05' font-family='Arial' font-size='18'%3E√%3C/text%3E%3C/svg%3E");
             background-attachment: fixed;
-            padding-top: var(--nav-height); /* Tránh bị che bởi thanh nav */
         }
 
-        /* --- THANH ĐIỀU HƯỚNG NGANG PHÍA TRÊN --- */
+        /* --- THANH ĐIỀU HƯỚNG NGANG --- */
         .top-nav {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             height: var(--nav-height);
             background: white;
             display: flex;
             align-items: center;
             padding: 0 20px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            z-index: 2000;
+            z-index: 9999;
             overflow-x: auto;
-            white-space: nowrap;
         }
 
         .nav-group {
             display: flex;
             align-items: center;
-            margin-right: 30px;
-            padding-right: 20px;
+            padding: 0 15px;
             border-right: 1px solid #eee;
         }
-
-        .nav-group:last-child { border-right: none; }
-
-        .nav-label { font-weight: bold; margin-right: 10px; color: var(--primary-color); }
-
-        .nav-item {
-            padding: 8px 12px;
-            margin: 0 4px;
-            text-decoration: none;
-            color: #555;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .nav-item:hover { background: #f0f7ff; color: var(--accent-color); }
-        .nav
